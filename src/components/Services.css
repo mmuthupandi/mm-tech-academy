@@ -1,0 +1,281 @@
+/* ── Google font import ─────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SECTION SHELL
+   ══════════════════════════════════════════════════════════════════════════ */
+.srv-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem 6rem;
+  overflow: hidden;
+  /* deep navy base so content is readable even before the bg loads */
+  background: #0a0e2e;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMATED WAVY BACKGROUND  (matches the dark-blue rippling ocean in video)
+   Two pseudo-elements create layered sine waves via border-radius animation.
+   ══════════════════════════════════════════════════════════════════════════ */
+.srv-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* radial vignette over the deep navy */
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 60%, #0d1356 0%, #080c2a 55%, #04081a 100%);
+  overflow: hidden;
+}
+
+/* Wave 1 — slow large ripple */
+.srv-bg::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 20%;
+  left: -50%;
+  background: radial-gradient(ellipse 60% 25% at 50% 50%, rgba(20, 40, 130, 0.55) 0%, transparent 70%);
+  border-radius: 45% 55% 60% 40% / 40% 50% 50% 60%;
+  animation: wave1 9s ease-in-out infinite;
+}
+
+/* Wave 2 — faster smaller ripple */
+.srv-bg::after {
+  content: "";
+  position: absolute;
+  width: 180%;
+  height: 180%;
+  top: 30%;
+  left: -40%;
+  background: radial-gradient(ellipse 50% 20% at 50% 50%, rgba(10, 25, 100, 0.4) 0%, transparent 70%);
+  border-radius: 55% 45% 40% 60% / 60% 40% 60% 40%;
+  animation: wave2 12s ease-in-out infinite;
+}
+
+@keyframes wave1 {
+
+  0%,
+  100% {
+    border-radius: 45% 55% 60% 40% / 40% 50% 50% 60%;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  33% {
+    border-radius: 60% 40% 45% 55% / 55% 45% 55% 45%;
+    transform: translateY(-18px) rotate(1deg);
+  }
+
+  66% {
+    border-radius: 40% 60% 55% 45% / 45% 55% 45% 55%;
+    transform: translateY(10px) rotate(-1deg);
+  }
+}
+
+@keyframes wave2 {
+
+  0%,
+  100% {
+    border-radius: 55% 45% 40% 60% / 60% 40% 60% 40%;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  40% {
+    border-radius: 40% 60% 55% 45% / 45% 55% 40% 60%;
+    transform: translateY(14px) rotate(-1.5deg);
+  }
+
+  70% {
+    border-radius: 60% 40% 50% 50% / 55% 45% 55% 45%;
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SPARKLE CANVAS  (star / dot particles drawn by canvas)
+   ══════════════════════════════════════════════════════════════════════════ */
+.srv-sparkle {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MASCOT  (floating purple character, top-left like in the original)
+   ══════════════════════════════════════════════════════════════════════════ */
+.srv-mascot-wrap {
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  z-index: 5;
+  animation: mascot-hover 4s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(100, 60, 200, 0.5));
+}
+
+.srv-mascot-svg {
+  width: clamp(100px, 14vw, 180px);
+  height: auto;
+}
+
+@keyframes mascot-hover {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SECTION TITLE
+   ══════════════════════════════════════════════════════════════════════════ */
+.srv-title {
+  position: relative;
+  z-index: 10;
+  color: #FCF8B8;
+  font-family: 'Fredoka One', 'Exo 2', Arial Black, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BLOCK ROW
+   ══════════════════════════════════════════════════════════════════════════ */
+.srv-blocks {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  /* stagger heights like the original */
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   INDIVIDUAL LEGO BLOCK WRAPPER
+   ══════════════════════════════════════════════════════════════════════════ */
+.lego-block {
+  /* stagger vertical position so blocks sit at different heights like video */
+  flex: 0 0 auto;
+  width: clamp(130px, 17vw, 200px);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
+}
+
+.lego-block:hover {
+  transform: translateY(-10px) scale(1.06) !important;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7));
+}
+
+.lego-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Alternating bob animations ── */
+@keyframes bob-up {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes bob-down {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(14px);
+  }
+}
+
+.lego-bob-up {
+  animation: bob-up 3.5s ease-in-out infinite;
+}
+
+.lego-bob-down {
+  animation: bob-down 3.5s ease-in-out infinite;
+}
+
+/* ── Stagger the five blocks into a slightly curved row (like video) ── */
+.lego-block:nth-child(1) {
+  margin-bottom: 30px;
+}
+
+.lego-block:nth-child(2) {
+  margin-bottom: 60px;
+}
+
+.lego-block:nth-child(3) {
+  margin-bottom: 10px;
+}
+
+.lego-block:nth-child(4) {
+  margin-bottom: 50px;
+}
+
+.lego-block:nth-child(5) {
+  margin-bottom: 20px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .srv-section {
+    padding: 4rem 1rem 5rem;
+  }
+
+  .srv-blocks {
+    gap: 1rem;
+  }
+
+  .lego-block {
+    width: clamp(100px, 42vw, 160px);
+  }
+
+  /* flatten the stagger on small screens */
+  .lego-block:nth-child(n) {
+    margin-bottom: 0;
+  }
+
+  .srv-mascot-wrap {
+    top: -5px;
+    left: -10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lego-block {
+    width: clamp(90px, 44vw, 140px);
+  }
+}
