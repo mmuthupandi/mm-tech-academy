@@ -134,13 +134,9 @@
   position: relative;
   z-index: 1;
   transition: all 0.3s ease;
-}
-
-.nlp-orb-number {
+  font-weight: 800;
   font-size: 1.125rem;
-  font-weight: 700;
   font-family: var(--font-heading);
-  line-height: 1;
 }
 
 .nlp-accordion-btn:hover .nlp-accordion-icon-orb {

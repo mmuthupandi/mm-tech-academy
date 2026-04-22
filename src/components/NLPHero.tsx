@@ -28,12 +28,7 @@ export const NLPHero = () => {
     }
   ];
 
-  const unitIcons = [
-    <span key="u1" className="nlp-orb-number">1</span>,
-    <span key="u2" className="nlp-orb-number">2</span>,
-    <span key="u3" className="nlp-orb-number">3</span>,
-    <span key="u4" className="nlp-orb-number">4</span>,
-  ];
+  const unitIcons = ['1', '2', '3', '4'];
 
   const features = [
     { icon: <BookOpen className="w-5 h-5" />, label: '5 Comprehensive', sublabel: 'Modules', color: 'text-violet-400' },
