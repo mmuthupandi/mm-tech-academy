@@ -8,7 +8,8 @@ export const About = () => {
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '1.5rem' }}>A Global Footprint</h2>
           <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--gray-700)' }}>
@@ -41,7 +42,8 @@ export const About = () => {
           style={{ padding: '3rem', background: 'var(--green-dark)', color: 'white' }}
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
         >
           <Globe size={48} style={{ marginBottom: '1.5rem', color: 'var(--blue-light)' }} />
           <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Global Reach</h3>

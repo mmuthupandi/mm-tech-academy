@@ -1,0 +1,234 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION FLOW FIX  —  Clean, professional section transitions
+   Fixes: boxed layout, broken animations, missing transitions, mobile spacing
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Universal section reset — seamless flow between sections ─────────── */
+section {
+  position: relative;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── 2. Hero sticky slide transition ────────────────── */
+.hero {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+}
+
+/* ── 3. Services section smooth integration ──────────────────────────────── */
+.srv-section {
+  margin-top: -1px;
+  margin-bottom: -1px;
+  z-index: 1;
+}
+
+/* Soft gradient fade INTO dark services section */
+.srv-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, 
+    rgba(248, 250, 252, 0.15) 0%, 
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Soft gradient fade OUT of dark services section */
+.srv-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, 
+    rgba(248, 250, 252, 0.15) 0%, 
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── 4. Dark sections (NLP) smooth integration ────────────────────────────── */
+.section-dark {
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+.section-dark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, 
+    rgba(248, 250, 252, 0.08) 0%, 
+    transparent 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section-dark::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, 
+    rgba(248, 250, 252, 0.08) 0%, 
+    transparent 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* ── 5. Smooth scroll-based animations ────────────────────────────────────── */
+[data-animate] {
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── 6. Smooth page-level scroll ──────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f8fafc;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── 7. Section spacing consistency ───────────────────────────────────────── */
+.section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  transition: padding 0.3s ease;
+}
+
+/* ── 8. Mobile optimizations ──────────────────────────────────────────────── */
+/* ── 8. Mobile optimizations ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Consistent section padding on mobile */
+  .section {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  /* Hero adjustments */
+
+  .hero-content {
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+  }
+
+  /* Grid fixes */
+  .grid-2-cols {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Services section mobile layout */
+  .srv-section {
+    padding: 4rem 1rem 5rem !important;
+  }
+
+  .srv-blocks {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    justify-items: center;
+    align-items: end;
+    gap: 1rem !important;
+  }
+
+  /* Flatten lego block stagger on mobile */
+  .lego-block:nth-child(1),
+  .lego-block:nth-child(2),
+  .lego-block:nth-child(3),
+  .lego-block:nth-child(4),
+  .lego-block:nth-child(5) {
+    margin-bottom: 0 !important;
+  }
+
+  /* Center odd last block */
+  .lego-block:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: clamp(130px, 50vw, 180px) !important;
+  }
+
+  /* Hide mascot on mobile to prevent overlap */
+  .srv-mascot-wrap {
+    display: none;
+  }
+
+  /* Programs banner responsive */
+  .programs-banner {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 2rem !important;
+  }
+
+  .programs-banner-title {
+    font-size: 1.8rem !important;
+  }
+
+  /* NLP title */
+  .nlp-title {
+    font-size: clamp(1.6rem, 5vw, 2.4rem) !important;
+  }
+
+  /* Footer grid */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+
+  /* Glass cards */
+  .glass-card {
+    padding: 2rem !important;
+  }
+
+  /* Marquee items */
+  .marquee-item {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* ── 9. Reduce motion for accessibility ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

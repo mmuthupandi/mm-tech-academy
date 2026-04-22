@@ -6,18 +6,21 @@ import { Programs } from './components/Programs';
 import { NLPCourse } from './components/NLPCourse';
 import { Partners } from './components/Partners';
 import { Footer } from './components/Footer';
+import './components/SectionFlow.css';
 
 function App() {
   return (
     <div className="app">
       <Navbar />
       <Hero />
-      <About />
-      <Services />
-      <Programs />
-      <NLPCourse />
-      <Partners />
-      <Footer />
+      <div style={{ position: 'relative', zIndex: 10, background: 'var(--gray-50)' }}>
+        <About />
+        <Services />
+        <Programs />
+        <NLPCourse />
+        <Partners />
+        <Footer />
+      </div>
     </div>
   );
 }

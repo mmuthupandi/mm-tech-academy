@@ -1,0 +1,479 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   PROGRAM CARDS - PREMIUM LAYERED DESIGN WITH VISIBLE ANIMATIONS
+   Layout preserved exactly as in reference image
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.program-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1.25rem;
+  border-radius: 16px;
+  height: 140px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.program-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Animated Background Container (INSIDE card, no overflow) ──────────── */
+.program-card-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 16px;
+}
+
+/* ── Content Layer (above animation) ────────────────────────────────────── */
+.program-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.program-card-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.program-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.program-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.3;
+  max-width: 140px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMATION 1: HARDWARE - Moving circuit glow
+   Bright cyan to teal gradient with circuit pattern
+   ══════════════════════════════════════════════════════════════════════════ */
+.anim-hardware {
+  background: linear-gradient(135deg, #b2ebf2 0%, #26c6da 40%, #00acc1 100%);
+}
+
+/* Layer 2: Soft radial glow (light highlight) */
+.anim-hardware::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  opacity: 1;
+}
+
+/* Layer 3: Moving circuit glow animation */
+.anim-hardware::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(90deg, transparent 0px, transparent 15px, rgba(0, 229, 255, 0.4) 15px, rgba(0, 229, 255, 0.4) 17px),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 15px, rgba(0, 229, 255, 0.4) 15px, rgba(0, 229, 255, 0.4) 17px);
+  animation: circuit-move 3s linear infinite;
+  opacity: 0.8;
+  filter: blur(0.5px);
+}
+
+@keyframes circuit-move {
+  0% { transform: translate(0, 0); opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { transform: translate(15px, 15px); opacity: 0.6; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMATION 2: CYBERSECURITY - Ripple waves
+   Bright green gradient with expanding circles
+   ══════════════════════════════════════════════════════════════════════════ */
+.anim-security {
+  background: linear-gradient(135deg, #c8e6c9 0%, #66bb6a 40%, #43a047 100%);
+}
+
+/* Layer 2: Soft radial glow (light highlight) */
+.anim-security::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 60%);
+  opacity: 1;
+}
+
+/* Layer 3: Ripple waves animation */
+.anim-security::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 3px solid rgba(129, 199, 132, 0.6);
+  border-radius: 50%;
+  top: 50%;
+  right: 15%;
+  transform: translate(0, -50%);
+  animation: ripple-wave 2.5s ease-out infinite;
+  box-shadow: 0 0 20px rgba(129, 199, 132, 0.4);
+}
+
+@keyframes ripple-wave {
+  0% { transform: translate(0, -50%) scale(0.6); opacity: 0.8; }
+  100% { transform: translate(0, -50%) scale(1.6); opacity: 0; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMATION 3: PROGRAMMING - Fast horizontal lines
+   Bright blue gradient with scrolling code lines
+   ══════════════════════════════════════════════════════════════════════════ */
+.anim-programming {
+  background: linear-gradient(135deg, #bbdefb 0%, #42a5f5 40%, #1e88e5 100%);
+}
+
+/* Layer 2: Soft radial glow (light highlight) */
+.anim-programming::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  opacity: 1;
+}
+
+/* Layer 3: Horizontal scrolling lines animation */
+.anim-programming::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(0deg, 
+      transparent 0px, 
+      transparent 6px, 
+      rgba(66, 165, 245, 0.5) 6px, 
+      rgba(66, 165, 245, 0.5) 8px,
+      transparent 8px,
+      transparent 10px,
+      rgba(66, 165, 245, 0.7) 10px,
+      rgba(66, 165, 245, 0.7) 12px
+    );
+  animation: code-scroll 1.5s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes code-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-12px); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMATION 4: DATA SCIENCE - Pulsing nodes
+   Bright purple gradient with neural network nodes
+   ══════════════════════════════════════════════════════════════════════════ */
+.anim-datascience {
+  background: linear-gradient(135deg, #e1bee7 0%, #ab47bc 40%, #8e24aa 100%);
+}
+
+/* Layer 2: Soft radial glow (light highlight) */
+.anim-datascience::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  opacity: 1;
+}
+
+/* Layer 3: Pulsing nodes animation */
+.anim-datascience::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 75% 30%, rgba(186, 104, 200, 0.6) 0%, transparent 12%),
+    radial-gradient(circle at 85% 55%, rgba(186, 104, 200, 0.6) 0%, transparent 12%),
+    radial-gradient(circle at 78% 75%, rgba(186, 104, 200, 0.6) 0%, transparent 12%),
+    radial-gradient(circle at 90% 40%, rgba(186, 104, 200, 0.6) 0%, transparent 12%);
+  animation: nodes-pulse 3s ease-in-out infinite;
+  filter: blur(1px);
+}
+
+@keyframes nodes-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMATION 5: RENEWABLE ENERGY - Rotating rays
+   Bright orange gradient with rotating sun rays
+   ══════════════════════════════════════════════════════════════════════════ */
+.anim-energy {
+  background: linear-gradient(135deg, #ffe0b2 0%, #ff9800 40%, #f57c00 100%);
+}
+
+/* Layer 2: Soft radial glow (light highlight) */
+.anim-energy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 60%);
+  opacity: 1;
+}
+
+/* Layer 3: Rotating sun rays animation */
+.anim-energy::after {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: 
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(255, 183, 77, 0.6) 15deg,
+      transparent 30deg,
+      rgba(255, 183, 77, 0.6) 60deg,
+      transparent 75deg,
+      rgba(255, 183, 77, 0.6) 105deg,
+      transparent 120deg,
+      rgba(255, 183, 77, 0.6) 150deg,
+      transparent 165deg,
+      rgba(255, 183, 77, 0.6) 195deg,
+      transparent 210deg,
+      rgba(255, 183, 77, 0.6) 240deg,
+      transparent 255deg,
+      rgba(255, 183, 77, 0.6) 285deg,
+      transparent 300deg,
+      rgba(255, 183, 77, 0.6) 330deg,
+      transparent 345deg
+    );
+  top: 50%;
+  right: 15%;
+  transform: translate(0, -50%);
+  animation: sun-rotate 6s linear infinite;
+  opacity: 0.9;
+  filter: blur(1px);
+}
+
+@keyframes sun-rotate {
+  0% { transform: translate(0, -50%) rotate(0deg); }
+  100% { transform: translate(0, -50%) rotate(360deg); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMATION 6: DIGITAL MARKETING - Expanding circles
+   Bright blue gradient with ripple effect
+   ══════════════════════════════════════════════════════════════════════════ */
+.anim-marketing {
+  background: linear-gradient(135deg, #b3e5fc 0%, #29b6f6 40%, #039be5 100%);
+}
+
+/* Layer 2: Soft radial glow (light highlight) */
+.anim-marketing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  opacity: 1;
+}
+
+/* Layer 3: Expanding circles animation */
+.anim-marketing::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(79, 195, 247, 0.7);
+  border-radius: 50%;
+  top: 50%;
+  right: 18%;
+  transform: translate(0, -50%);
+  animation: circle-expand 2.5s ease-out infinite;
+  box-shadow: 0 0 15px rgba(79, 195, 247, 0.4);
+}
+
+@keyframes circle-expand {
+  0% { transform: translate(0, -50%) scale(0.5); opacity: 0.9; }
+  100% { transform: translate(0, -50%) scale(1.8); opacity: 0; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMATION 7: PHOTOGRAPHY - Rotating aperture
+   Bright pink gradient with camera aperture effect
+   ══════════════════════════════════════════════════════════════════════════ */
+.anim-photography {
+  background: linear-gradient(135deg, #f8bbd0 0%, #ec407a 40%, #d81b60 100%);
+}
+
+/* Layer 2: Soft radial glow (light highlight) */
+.anim-photography::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  opacity: 1;
+}
+
+/* Layer 3: Rotating aperture animation */
+.anim-photography::after {
+  content: '';
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  background: 
+    conic-gradient(
+      from 0deg,
+      rgba(244, 143, 177, 0.7) 0deg,
+      transparent 25deg,
+      rgba(244, 143, 177, 0.7) 60deg,
+      transparent 85deg,
+      rgba(244, 143, 177, 0.7) 120deg,
+      transparent 145deg,
+      rgba(244, 143, 177, 0.7) 180deg,
+      transparent 205deg,
+      rgba(244, 143, 177, 0.7) 240deg,
+      transparent 265deg,
+      rgba(244, 143, 177, 0.7) 300deg,
+      transparent 325deg
+    );
+  border-radius: 50%;
+  top: 50%;
+  right: 15%;
+  transform: translate(0, -50%);
+  animation: aperture-spin 5s linear infinite;
+  opacity: 0.9;
+  filter: blur(1px);
+}
+
+@keyframes aperture-spin {
+  0% { transform: translate(0, -50%) rotate(0deg); }
+  100% { transform: translate(0, -50%) rotate(360deg); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMATION 8: TECH FOR BUSINESS - Rising bars
+   Bright green gradient with upward moving bars
+   ══════════════════════════════════════════════════════════════════════════ */
+.anim-business {
+  background: linear-gradient(135deg, #c8e6c9 0%, #66bb6a 40%, #43a047 100%);
+}
+
+/* Layer 2: Soft radial glow (light highlight) */
+.anim-business::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+  opacity: 1;
+}
+
+/* Layer 3: Rising bars animation */
+.anim-business::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to top, 
+      transparent 0%, 
+      transparent 15%, 
+      rgba(129, 199, 132, 0.5) 20%, 
+      transparent 25%,
+      transparent 35%,
+      rgba(129, 199, 132, 0.6) 40%,
+      transparent 45%,
+      transparent 55%,
+      rgba(129, 199, 132, 0.7) 60%,
+      transparent 65%,
+      transparent 75%,
+      rgba(129, 199, 132, 0.8) 80%,
+      transparent 85%
+    );
+  animation: bars-rise 2s ease-in-out infinite;
+  opacity: 0.9;
+  filter: blur(1px);
+}
+
+@keyframes bars-rise {
+  0% { transform: translateY(100%); opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0.5; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MOBILE OPTIMIZATIONS
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .program-card {
+    height: 130px;
+    padding: 1rem;
+  }
+
+  .program-card-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .program-card-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .program-card-title {
+    font-size: 0.9rem;
+  }
+
+  /* Simplify animations on mobile for performance */
+  .anim-hardware::after,
+  .anim-security::after,
+  .anim-programming::after,
+  .anim-datascience::after,
+  .anim-energy::after,
+  .anim-marketing::after,
+  .anim-photography::after,
+  .anim-business::after {
+    animation-duration: 3s;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ACCESSIBILITY - Reduced Motion
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .anim-hardware::after,
+  .anim-security::after,
+  .anim-programming::after,
+  .anim-datascience::after,
+  .anim-energy::after,
+  .anim-marketing::after,
+  .anim-photography::after,
+  .anim-business::after {
+    animation: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PERFORMANCE OPTIMIZATION
+   ══════════════════════════════════════════════════════════════════════════ */
+.program-card-bg,
+.program-card-bg::before,
+.program-card-bg::after {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
