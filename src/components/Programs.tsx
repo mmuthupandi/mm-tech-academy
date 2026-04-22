@@ -361,7 +361,7 @@ const tracks = Array.from({ length: 34 }).map((_, i) => {
   return { y, color, duration, width, opacity, dashArray: patternGroup.array, patternSum: patternGroup.sum, isThick: width >= 3 };
 });
 
-const packets = Array.from({ length: 10 }).map((_, i) => ({
+const packets = Array.from({ length: 10 }).map(() => ({
   y: 35 + Math.random() * 180,
   length: 30 + Math.random() * 50,
   width: 2 + Math.random() * 2,
@@ -370,7 +370,7 @@ const packets = Array.from({ length: 10 }).map((_, i) => ({
   duration: 1 + Math.random() * 1.5,
 }));
 
-const codeNodes = Array.from({ length: 15 }).map((_, i) => ({
+const codeNodes = Array.from({ length: 15 }).map(() => ({
   cx: 240 + Math.random() * 140,
   cy: 30 + Math.random() * 190,
   delay: Math.random() * 4,
@@ -699,7 +699,7 @@ const solarRays = Array.from({ length: 45 }).map((_, i) => {
   };
 });
 
-const solarParticles = Array.from({ length: 25 }).map((_, i) => {
+const solarParticles = Array.from({ length: 25 }).map(() => {
   const angle = Math.random() * 2 * Math.PI;
   const distance = 60 + Math.random() * 150;
   return {
@@ -1048,7 +1048,7 @@ const photoRings = [
 
 const photoBlades = [0, 60, 120, 180, 240, 300];
 
-const photoParticles = Array.from({ length: 24 }).map((_, i) => ({
+const photoParticles = Array.from({ length: 24 }).map(() => ({
   x: photoCenterX + (Math.random() - 0.5) * 260,
   y: photoCenterY + (Math.random() - 0.5) * 240,
   size: 1 + Math.random() * 2,
@@ -1218,7 +1218,7 @@ const growthDataPoints = [
 
 const growthPathString = `M ${growthDataPoints.map(p => `${p.x} ${p.y}`).join(" L ")}`;
 
-const growthParticles = Array.from({ length: 20 }).map((_, i) => {
+const growthParticles = Array.from({ length: 20 }).map(() => {
   return {
     x: 180 + Math.random() * 220,
     y: 50 + Math.random() * 200,
