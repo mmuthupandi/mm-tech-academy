@@ -14,8 +14,8 @@
   justify-content: center;
   padding: 5rem 2rem 6rem;
   overflow: hidden;
-  /* deep navy base so content is readable even before the bg loads */
-  background: #0a0e2e;
+  /* premium gradient base */
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-vibrant));
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -26,9 +26,8 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* radial vignette over the deep navy */
-  background:
-    radial-gradient(ellipse 120% 80% at 50% 60%, #0d1356 0%, #080c2a 55%, #04081a 100%);
+  /* subtle overlay for the gradient background */
+  background: rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
 

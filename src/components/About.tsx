@@ -5,7 +5,7 @@ export const About = () => {
   return (
     <section id="about" className="section container">
       <div className="grid-2-cols">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -26,7 +26,7 @@ export const About = () => {
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <div style={{ background: 'var(--green-light)', padding: '1rem', borderRadius: '12px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ background: 'var(--blue-light)', padding: '1rem', borderRadius: '12px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <MapPin size={24} />
               </div>
               <div>
@@ -36,10 +36,10 @@ export const About = () => {
             </div>
           </div>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="glass-card"
-          style={{ padding: '3rem', background: 'var(--green-dark)', color: 'white' }}
+          style={{ padding: '3rem', background: 'linear-gradient(135deg, var(--blue-dark), var(--blue-vibrant))', color: 'white' }}
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}

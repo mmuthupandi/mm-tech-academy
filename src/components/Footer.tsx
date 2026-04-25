@@ -6,7 +6,7 @@ const FacebookIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill=
 
 export const Footer = () => {
   return (
-    <footer style={{ background: 'var(--green-dark)', color: 'white', padding: '6rem 0 2rem' }}>
+    <footer style={{ background: 'var(--blue-dark)', color: 'white', padding: '6rem 0 2rem' }}>
       <div className="container footer-grid" style={{ marginBottom: '4rem' }}>
         <div>
           <h3 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-heading)', marginBottom: '1.5rem' }}>MM Tech Academy</h3>
@@ -34,15 +34,15 @@ export const Footer = () => {
           <h4 style={{ fontSize: '1.2rem', marginBottom: '1.5rem' }}>Contact & Campuses</h4>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--gray-200)' }}>
             <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
-              <MapPin size={20} style={{ flexShrink: 0, color: 'var(--green-light)' }} />
+              <MapPin size={20} style={{ flexShrink: 0, color: 'var(--blue-light)' }} />
               <span>Main Centre: Sundapalayam, Coimbatore</span>
             </li>
             <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
-              <MapPin size={20} style={{ flexShrink: 0, color: 'var(--green-light)' }} />
+              <MapPin size={20} style={{ flexShrink: 0, color: 'var(--blue-light)' }} />
               <span>City Campuses: Vadavalli, Coimbatore</span>
             </li>
             <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-              <Mail size={20} style={{ color: 'var(--green-light)' }} />
+              <Mail size={20} style={{ color: 'var(--blue-light)' }} />
               <span>contact@mmtech.academy</span>
             </li>
           </ul>

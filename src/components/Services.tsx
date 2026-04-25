@@ -14,7 +14,7 @@ function darken(hex: string, a: number) { const [r, g, b] = hexToRgb(hex); retur
 /* ─── data ────────────────────────────────────────────────────────────────── */
 const PILLARS = [
   { lines: ["EDUCATION", "SOLUTIONS"], color: "#4A90D9", icon: "book" },
-  { lines: ["CONSULTING", "& STRATEGY"], color: "#5BBD72", icon: "chart" },
+  { lines: ["CONSULTING", "& STRATEGY"], color: "#3B82F6", icon: "chart" },
   { lines: ["TECH &", "PRODUCT"], color: "#E8855A", icon: "cpu" },
   { lines: ["FINANCE &", "ANALYTICS"], color: "#9B6FBF", icon: "finance" },
   { lines: ["START-UPS &", "EMERGING"], color: "#D4546A", icon: "rocket" },
@@ -130,8 +130,8 @@ function Mascot() {
       {/* lego studs hat */}
       {[52, 70, 88].map((x, i) => (
         <g key={i}>
-          <rect x={x - 8} y="26" width="16" height="10" rx="3.5" fill="#3a9e45" />
-          <ellipse cx={x} cy="26" rx="8" ry="4" fill="#52c45e" />
+          <rect x={x - 8} y="26" width="16" height="10" rx="3.5" fill="#2563EB" />
+          <ellipse cx={x} cy="26" rx="8" ry="4" fill="#60A5FA" />
         </g>
       ))}
 

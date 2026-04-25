@@ -3,7 +3,7 @@
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  background: linear-gradient(to bottom right, #06091f, #0b0f2a, #130d35);
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-vibrant));
   padding: 4rem 0;
   color: white;
 }
