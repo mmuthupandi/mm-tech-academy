@@ -26,7 +26,6 @@ export const Footer = () => {
             <li><a href="#about" style={{ color: 'var(--gray-200)' }}>About Us</a></li>
             <li><a href="#services" style={{ color: 'var(--gray-200)' }}>Our Pillars</a></li>
             <li><a href="#programs" style={{ color: 'var(--gray-200)' }}>Programs</a></li>
-            <li><a href="#nlp" style={{ color: 'var(--gray-200)' }}>NLP Spotlight</a></li>
           </ul>
         </div>
 

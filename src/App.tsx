@@ -3,7 +3,6 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Services } from './components/Services';
 import { Programs } from './components/Programs';
-import { NLPCourse } from './components/NLPCourse';
 import { Partners } from './components/Partners';
 import { Footer } from './components/Footer';
 import './components/SectionFlow.css';
@@ -17,7 +16,6 @@ function App() {
         <About />
         <Services />
         <Programs />
-        <NLPCourse />
         <Partners />
         <Footer />
       </div>

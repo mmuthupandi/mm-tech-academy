@@ -57,41 +57,7 @@ section {
   pointer-events: none;
 }
 
-/* ── 4. Dark sections (NLP) smooth integration ────────────────────────────── */
-.section-dark {
-  margin-top: -1px;
-  margin-bottom: -1px;
-}
 
-.section-dark::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background: linear-gradient(to bottom, 
-    rgba(248, 250, 252, 0.08) 0%, 
-    transparent 100%
-  );
-  z-index: 0;
-  pointer-events: none;
-}
-
-.section-dark::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-  background: linear-gradient(to top, 
-    rgba(248, 250, 252, 0.08) 0%, 
-    transparent 100%
-  );
-  z-index: 0;
-  pointer-events: none;
-}
 
 
 /* ── 5. Smooth scroll-based animations ────────────────────────────────────── */
@@ -194,10 +160,6 @@ body {
     font-size: 1.8rem !important;
   }
 
-  /* NLP title */
-  .nlp-title {
-    font-size: clamp(1.6rem, 5vw, 2.4rem) !important;
-  }
 
   /* Footer grid */
   .footer-grid {

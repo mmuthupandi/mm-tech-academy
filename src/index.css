@@ -63,10 +63,6 @@ img {
   padding: 6rem 0;
 }
 
-.section-dark {
-  background-color: var(--gray-900);
-  color: var(--white);
-}
 
 .section-green {
   background-color: var(--green-dark);
@@ -81,7 +77,6 @@ img {
   color: var(--gray-900);
 }
 
-.section-dark .section-title,
 .section-green .section-title {
   color: var(--white);
 }
@@ -338,10 +333,6 @@ img {
   text-align: center;
 }
 
-.nlp-title {
-  font-size: 2rem;
-  line-height: 1.2;
-}
 
 .footer-grid {
   display: grid;
@@ -384,9 +375,6 @@ img {
     width: auto;
   }
 
-  .nlp-title {
-    font-size: 3rem;
-  }
 
   .footer-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
