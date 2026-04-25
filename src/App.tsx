@@ -5,6 +5,7 @@ import { Services } from './components/Services';
 import { Programs } from './components/Programs';
 import { Partners } from './components/Partners';
 import { Footer } from './components/Footer';
+import { TopoBackground } from './components/TopoBackground';
 import './components/SectionFlow.css';
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
     <div className="app">
       <Navbar />
       <Hero />
-      <div style={{ position: 'relative', zIndex: 10, background: 'var(--gray-50)' }}>
+      <div className="content-wrapper">
+        <TopoBackground />
         <About />
         <Services />
         <Programs />
@@ -22,5 +24,7 @@ function App() {
     </div>
   );
 }
+
+export default App;
 
 export default App;

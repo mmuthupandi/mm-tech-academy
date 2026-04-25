@@ -8,7 +8,7 @@ export const Partners = () => {
   ];
 
   return (
-    <section className="section" style={{ padding: '5rem 0', background: 'white', overflow: 'hidden' }}>
+    <section className="section" style={{ padding: '5rem 0', background: 'transparent', overflow: 'hidden' }}>
       <h2 className="section-title">Trusted by Industry Leaders</h2>
       <div className="marquee-container">
         <div className="marquee-content">

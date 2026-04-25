@@ -2,10 +2,10 @@
 
 :root {
   --green-dark: #0a3a2a;
-  --green-main: #145942;
-  --green-light: #208765;
-  --blue-vibrant: #0066ff;
-  --blue-light: #4d94ff;
+  --green-main: #6A63B7;
+  --green-light: #6A63B7;
+  --blue-vibrant: #6A63B7;
+  --blue-light: #6A63B7;
   --white: #ffffff;
   --gray-50: #f8fafc;
   --gray-100: #f1f5f9;
@@ -13,6 +13,7 @@
   --gray-800: #1e293b;
   --gray-900: #0f172a;
   --blue-dark: #0a0f25;
+  --brand: #6A63B7;
 
   --font-primary: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
@@ -26,10 +27,41 @@
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--gray-50);
+  background-color: #f8fafc;
   color: var(--gray-800);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  background-color: #f8fafc;
+  overflow: hidden;
+  --topo-mx: 0px;
+  --topo-my: 0px;
+}
+
+/* Animated topo pattern layer — sits behind all content */
+.content-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -120px;
+  background-image: url('./assets/topo-pattern.png');
+  background-repeat: repeat;
+  background-size: 600px;
+  opacity: 0.9;
+  z-index: 0;
+  pointer-events: none;
+  animation: topo-drift 30s linear infinite;
+  will-change: transform, background-position;
+  transform: translate(var(--topo-mx), var(--topo-my));
+  transition: transform 0.1s linear;
+}
+
+@keyframes topo-drift {
+  0%   { background-position: 0px 0px; }
+  100% { background-position: 600px 600px; }
 }
 
 h1,
@@ -83,13 +115,13 @@ img {
 
 /* Gradients */
 .text-gradient {
-  background: linear-gradient(135deg, var(--green-light), var(--blue-vibrant));
+  background: linear-gradient(135deg, #6A63B7, #9b96d4, #6A63B7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Buttons */
+/* ── Buttons with white overlay slide animation ──────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -97,21 +129,48 @@ img {
   padding: 0.875rem 2rem;
   border-radius: 9999px;
   font-weight: 600;
-  transition: all 0.3s ease;
   cursor: pointer;
-  border: none;
   font-family: var(--font-primary);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  border: none;
+}
+
+/* White overlay that slides in from the left on hover */
+.btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.22);
+  width: 0;
+  height: 100%;
+  transition: width 0.5s ease, left 0.5s ease;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* For light-background buttons, use a dark overlay instead */
+.btn-light::after {
+  background-color: rgba(106, 99, 183, 0.12);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--green-main), var(--blue-vibrant));
+  background: #6A63B7;
   color: var(--white);
-  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.3);
+  box-shadow: 0 4px 14px rgba(106, 99, 183, 0.35);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(106, 99, 183, 0.5);
 }
 
 .btn-outline {
@@ -121,8 +180,8 @@ img {
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
   border-color: var(--white);
+  transform: translateY(-3px);
 }
 
 /* Animations */
@@ -175,26 +234,15 @@ img {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: linear-gradient(135deg, #0d0b2e 0%, #1a1650 50%, #0f0d35 100%);
 }
 
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(10, 58, 42, 0.85), rgba(0, 102, 255, 0.4));
-  z-index: 1;
+  display: none;
 }
 
 .hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translateX(-50%) translateY(-50%);
-  object-fit: cover;
-  z-index: 0;
+  display: none;
 }
 
 .hero-content {
@@ -206,37 +254,17 @@ img {
   padding: 0 2rem;
 }
 
-/* Navigation */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 1.5rem 0;
-  z-index: 100;
-  transition: all 0.3s ease;
-}
+/* Navigation — all handled inline in Navbar.tsx */
+.navbar          { display: none; }
+.logo-text       { display: none; }
 
-.navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 1rem 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
+/* vertical desktop nav — hidden on mobile, shown on sm+ */
+.desktop-nav-vertical { display: none !important; }
+.mobile-nav-card      { display: flex; }
 
-.navbar.scrolled .logo-text {
-  color: var(--green-dark);
-}
-
-.navbar.scrolled .nav-links a {
-  color: var(--gray-800);
-}
-
-.logo-text {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -0.5px;
+@media (min-width: 640px) {
+  .desktop-nav-vertical { display: flex !important; }
+  .mobile-nav-card      { display: none !important; }
 }
 
 /* Glass effect for cards */
@@ -296,42 +324,10 @@ img {
   width: 100%;
 }
 
-/* Navigation Overrides */
-.desktop-nav {
-  display: none;
-}
-
-.mobile-menu-btn {
-  display: block;
-  cursor: pointer;
-  z-index: 101;
-}
-
-.mobile-nav {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: white;
-  padding: 1rem 2rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  overflow: hidden;
-}
-
-.mobile-nav a {
-  font-weight: 500;
-  color: var(--gray-800);
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--gray-100);
-}
-
-.mobile-nav .btn {
-  margin-top: 0.5rem;
-  text-align: center;
-}
+/* Navigation Overrides — legacy, no longer used */
+.desktop-nav     { display: none !important; }
+.mobile-menu-btn { display: none !important; }
+.mobile-nav      { display: none !important; }
 
 
 .footer-grid {
@@ -357,9 +353,7 @@ img {
   }
 
   .desktop-nav {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+    display: none;
   }
 
   .mobile-menu-btn {
@@ -648,7 +642,7 @@ img {
   flex-direction: column;
   align-items: center;
   filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
   cursor: pointer;
 }
 
@@ -698,7 +692,7 @@ img {
   color: #1e293b;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
