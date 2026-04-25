@@ -6,22 +6,26 @@ import { Programs } from './components/Programs';
 import { Partners } from './components/Partners';
 import { Footer } from './components/Footer';
 import { TopoBackground } from './components/TopoBackground';
+import { Loader } from './components/Loader';
 import './components/SectionFlow.css';
 
 function App() {
   return (
-    <div className="app">
-      <Navbar />
-      <Hero />
-      <div className="content-wrapper">
-        <TopoBackground />
-        <About />
-        <Services />
-        <Programs />
-        <Partners />
+    <>
+      <Loader />
+      <div className="app">
+        <Navbar />
+        <Hero />
+        <div className="content-wrapper">
+          <TopoBackground />
+          <About />
+          <Services />
+          <Programs />
+          <Partners />
+        </div>
         <Footer />
       </div>
-    </div>
+    </>
   );
 }
 

@@ -254,17 +254,42 @@ img {
   padding: 0 2rem;
 }
 
-/* Navigation — all handled inline in Navbar.tsx */
-.navbar          { display: none; }
-.logo-text       { display: none; }
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 0;
+  z-index: 100;
+  transition: all 0.6s ease;
+}
 
-/* vertical desktop nav — hidden on mobile, shown on sm+ */
+.navbar.scrolled {
+  background: rgba(106, 99, 183, 0.97);
+  backdrop-filter: blur(10px);
+  padding: 1rem 0;
+  box-shadow: 0 4px 20px rgba(106, 99, 183, 0.3);
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+/* vertical desktop nav — no longer used */
 .desktop-nav-vertical { display: none !important; }
-.mobile-nav-card      { display: flex; }
+.mobile-nav-card      { display: none !important; }
 
-@media (min-width: 640px) {
-  .desktop-nav-vertical { display: flex !important; }
-  .mobile-nav-card      { display: none !important; }
+/* Navbar responsive split */
+.navbar-desktop-only { display: none; }
+.navbar-mobile-only  { display: block; }
+
+@media (min-width: 768px) {
+  .navbar-desktop-only { display: block; }
+  .navbar-mobile-only  { display: none; }
 }
 
 /* Glass effect for cards */
@@ -324,10 +349,43 @@ img {
   width: 100%;
 }
 
-/* Navigation Overrides — legacy, no longer used */
-.desktop-nav     { display: none !important; }
-.mobile-menu-btn { display: none !important; }
-.mobile-nav      { display: none !important; }
+/* Navigation Overrides */
+.desktop-nav {
+  display: none;
+}
+
+.mobile-menu-btn {
+  display: block;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(106, 99, 183, 0.97);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.mobile-nav a {
+  font-weight: 500;
+  color: white;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mobile-nav .btn {
+  margin-top: 0.5rem;
+  text-align: center;
+}
 
 
 .footer-grid {
@@ -353,7 +411,9 @@ img {
   }
 
   .desktop-nav {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 
   .mobile-menu-btn {

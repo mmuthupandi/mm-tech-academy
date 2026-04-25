@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
-import { Home, Info, Layers, BookOpen, Users, Phone, Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Menu, X, Home, Info, Layers, BookOpen, Users, Phone } from 'lucide-react';
+import logo from '../assets/logo-full.png';
 
 const NAV_ITEMS = [
   { id: 'home',     label: 'Home',     icon: Home,     href: '#'         },
@@ -10,135 +11,42 @@ const NAV_ITEMS = [
   { id: 'contact',  label: 'Contact',  icon: Phone,    href: '#contact'  },
 ];
 
-/* ── Desktop: vertical left-side pill navbar ─────────────────────────────── */
+/* ── Desktop: original horizontal top navbar ─────────────────────────────── */
 const DesktopNav = () => {
-  const [active, setActive]   = useState('home');
-  const [hovered, setHovered] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
 
-  /* scroll-spy */
   useEffect(() => {
-    const ids = NAV_ITEMS.map(i => i.id).filter(id => id !== 'home');
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }),
-      { threshold: 0.45, rootMargin: '-10% 0px -10% 0px' }
-    );
-    ids.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
-    const onScroll = () => { if (window.scrollY < 80) setActive('home'); };
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll);
-    return () => { observer.disconnect(); window.removeEventListener('scroll', onScroll); };
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: '30%',
-      left: '12px',
-      transform: 'translateY(-30%)',
-      zIndex: 100,
-      flexDirection: 'column',
-      gap: '8px',
-    }}
-    className="desktop-nav-vertical"
-    >
-      {NAV_ITEMS.map(item => {
-        const Icon     = item.icon;
-        const isActive = active === item.id;
-        const isHov    = hovered === item.id;
-
-        return (
-          <a
-            key={item.id}
-            href={item.href}
-            onMouseEnter={() => setHovered(item.id)}
-            onMouseLeave={() => setHovered(null)}
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <a href="#" style={{ display: 'flex', alignItems: 'center' }}>
+          <img
+            src={logo}
+            alt="MM Tech Academy"
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: isActive ? '10px' : '0',
-              padding: isActive ? '10px 18px 10px 12px' : '10px',
-              borderRadius: '9999px',
-              textDecoration: 'none',
-              background: isActive
-                ? '#6A63B7'
-                : isHov
-                  ? 'rgba(106,99,183,0.1)'
-                  : 'rgba(255,255,255,0.85)',
-              border: isActive
-                ? '1px solid transparent'
-                : '1px solid rgba(226,232,240,0.9)',
-              boxShadow: isActive
-                ? '0 4px 18px rgba(106,99,183,0.4)'
-                : '0 2px 8px rgba(0,0,0,0.06)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)',
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
-              maxWidth: isActive ? '160px' : '44px',
+              height: '70px',
+              width: 'auto',
+              display: 'block'
             }}
-          >
-            <Icon
-              size={20}
-              strokeWidth={isActive ? 2.2 : 1.75}
-              style={{
-                color: isActive ? '#ffffff' : 'rgba(30,41,59,0.55)',
-                flexShrink: 0,
-                transition: 'color 0.3s ease',
-              }}
-            />
-            {/* label — only visible when active */}
-            <span style={{
-              fontSize: '0.875rem',
-              fontWeight: 600,
-              color: '#ffffff',
-              opacity: isActive ? 1 : 0,
-              maxWidth: isActive ? '100px' : '0',
-              overflow: 'hidden',
-              transition: 'opacity 0.3s ease, max-width 0.35s cubic-bezier(0.22,1,0.36,1)',
-              fontFamily: 'var(--font-primary)',
-            }}>
-              {item.label}
-            </span>
-          </a>
-        );
-      })}
-
-      {/* Enroll CTA at bottom */}
-      <a
-        href="#programs"
-        style={{
-          marginTop: '8px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '10px 14px',
-          borderRadius: '9999px',
-          background: 'linear-gradient(135deg, #6A63B7, #9b96d4)',
-          color: 'white',
-          fontSize: '0.78rem',
-          fontWeight: 700,
-          textDecoration: 'none',
-          boxShadow: '0 4px 14px rgba(106,99,183,0.4)',
-          transition: 'transform 0.35s ease, box-shadow 0.35s ease',
-          fontFamily: 'var(--font-primary)',
-          letterSpacing: '0.02em',
-        }}
-        onMouseEnter={e => {
-          (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-          (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 22px rgba(106,99,183,0.55)';
-        }}
-        onMouseLeave={e => {
-          (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-          (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 14px rgba(106,99,183,0.4)';
-        }}
-      >
-        Enroll
-      </a>
-    </div>
+          />
+        </a>
+        <div className="desktop-nav">
+          <a href="#about"    style={{ fontWeight: 500, color: 'white' }}>About</a>
+          <a href="#services" style={{ fontWeight: 500, color: 'white' }}>Services</a>
+          <a href="#programs" style={{ fontWeight: 500, color: 'white' }}>Programs</a>
+          <button className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem' }}>Enroll Now</button>
+        </div>
+      </div>
+    </nav>
   );
 };
 
-/* ── Mobile: top-right expandable card ──────────────────────────────────── */
+/* ── Mobile: top-right expandable card navbar ────────────────────────────── */
 const MobileNav = () => {
   const [isOpen, setIsOpen]     = useState(false);
   const [showLabels, setLabels] = useState(false);
@@ -158,8 +66,7 @@ const MobileNav = () => {
   }, [isOpen]);
 
   return (
-    <div style={{ position: 'fixed', top: '20px', right: '16px', zIndex: 100 }}
-         className="mobile-nav-card">
+    <div style={{ position: 'fixed', top: '16px', right: '16px', zIndex: 200 }}>
       <div
         ref={menuRef}
         style={{
@@ -170,7 +77,7 @@ const MobileNav = () => {
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           border: '1px solid rgba(226,232,240,0.9)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
           overflow: 'hidden',
           transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
           padding: isOpen ? '12px' : '0',
@@ -178,7 +85,7 @@ const MobileNav = () => {
           width: showLabels ? '176px' : isOpen ? '58px' : '50px',
         }}
       >
-        {/* toggle button */}
+        {/* Toggle button */}
         <button
           onClick={toggle}
           style={{
@@ -197,7 +104,7 @@ const MobileNav = () => {
           {isOpen ? <X size={17} color="white" /> : <Menu size={21} color="white" />}
         </button>
 
-        {/* links */}
+        {/* Nav links */}
         <div style={{
           display: 'flex', flexDirection: 'column', gap: '2px',
           maxHeight: isOpen ? '480px' : '0',
@@ -238,6 +145,7 @@ const MobileNav = () => {
             );
           })}
 
+          {/* Enroll CTA */}
           <a
             href="#programs"
             onClick={close}
@@ -261,9 +169,16 @@ const MobileNav = () => {
   );
 };
 
+/* ── Combined export ─────────────────────────────────────────────────────── */
 export const Navbar = () => (
   <>
-    <DesktopNav />
-    <MobileNav />
+    {/* Desktop: horizontal top bar */}
+    <div className="navbar-desktop-only">
+      <DesktopNav />
+    </div>
+    {/* Mobile: expandable card */}
+    <div className="navbar-mobile-only">
+      <MobileNav />
+    </div>
   </>
 );
