@@ -29,7 +29,7 @@ const DesktopNav = () => {
             src={logo}
             alt="MM Tech Academy"
             style={{
-              height: '70px',
+              height: '50px',
               width: 'auto',
               display: 'block'
             }}

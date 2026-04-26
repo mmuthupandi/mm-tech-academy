@@ -350,14 +350,15 @@ export const Services = () => {
         /* ---- CTA ---- */
         .svc-cta { padding: 80px 0; }
         .svc-cta-box {
-          background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+          background: linear-gradient(135deg, #6A63B7 0%, #4c4491 100%);
           border-radius: 28px; padding: 72px 80px;
           display: flex; align-items: center; justify-content: space-between; gap: 48px;
           position: relative; overflow: hidden;
+          box-shadow: 0 20px 40px rgba(106, 99, 183, 0.25);
         }
-        .svc-cta-orb { position: absolute; right: -60px; top: -60px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%); }
+        .svc-cta-orb { position: absolute; right: -60px; top: -60px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%); }
         .svc-cta-h { font-family: 'Fraunces', serif; font-size: clamp(1.75rem, 3vw, 2.75rem); font-weight: 600; color: #fff; line-height: 1.2; margin-bottom: 16px; }
-        .svc-cta-sub { font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+        .svc-cta-sub { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.6; }
         .svc-cta-btn {
           flex-shrink: 0; display: inline-flex; align-items: center; gap: 10px;
           padding: 16px 32px; border-radius: 14px; background: #fff; color: #1a1a2e;

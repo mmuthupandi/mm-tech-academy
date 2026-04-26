@@ -7,7 +7,7 @@ import { useEffect } from 'react';
  */
 export const TopoBackground = () => {
   useEffect(() => {
-    const wrapper = document.querySelector('.content-wrapper') as HTMLElement | null;
+    const wrapper = document.querySelector('.content-sections') as HTMLElement | null;
     if (!wrapper) return;
 
     let currentX = 0;

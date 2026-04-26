@@ -11,11 +11,8 @@ section {
   padding: 0;
 }
 
-/* ── 2. Hero — dark blue background, no sticky/slide effect ─────────────── */
-.hero {
-  position: relative;
-  z-index: 0;
-}
+/* ── 2. Hero — sticky so content-wrapper slides over it ─────────────────── */
+/* (hero position/z-index is set in index.css — do not override here) */
 
 /* ── 3. Services section smooth integration ──────────────────────────────── */
 .srv-section {

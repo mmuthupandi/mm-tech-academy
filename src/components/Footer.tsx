@@ -7,7 +7,7 @@ const FacebookIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill=
 
 export const Footer = () => {
   return (
-    <footer id="contact" style={{ background: 'linear-gradient(135deg, #0d0b2e 0%, #1a1650 50%, #0f0d35 100%)', color: 'white', padding: '5rem 0 2rem' }}>
+    <footer id="contact" style={{ background: 'linear-gradient(135deg, #0d0b2e 0%, #1a1650 50%, #0f0d35 100%)', color: 'white', padding: '5rem 0 2rem', position: 'relative', zIndex: 1 }}>
       <div className="container footer-grid" style={{ marginBottom: '4rem' }}>
         <div>
           <img src={logo} alt="MM Tech Academy" style={{ height: '72px', width: 'auto', objectFit: 'contain', marginBottom: '1rem' }} />
@@ -18,6 +18,17 @@ export const Footer = () => {
             <div style={{ cursor: 'pointer' }}><LinkedinIcon /></div>
             <div style={{ cursor: 'pointer' }}><TwitterIcon /></div>
             <div style={{ cursor: 'pointer' }}><FacebookIcon /></div>
+          </div>
+          <div style={{ marginTop: '2rem', borderRadius: '12px', overflow: 'hidden', height: '120px', width: '240px', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125322.513468850!2d76.88483284335937!3d11.011677499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859af2f973801%3A0x3d32483566164d!2sCoimbatore%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1714136000000!5m2!1sen!2sin" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen={true} 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
         

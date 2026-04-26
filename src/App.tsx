@@ -18,12 +18,14 @@ function App() {
         <Hero />
         <div className="content-wrapper">
           <TopoBackground />
-          <About />
-          <Services />
-          <Programs />
-          <Partners />
+          <div className="content-sections">
+            <About />
+            <Services />
+            <Programs />
+            <Partners />
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </>
   );

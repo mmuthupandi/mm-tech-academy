@@ -3,7 +3,14 @@ import { MapPin, Globe } from 'lucide-react';
 
 export const About = () => {
   return (
-    <section id="about" className="section container">
+    <motion.section 
+      id="about" 
+      className="section container"
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-200px" }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+    >
       <div className="grid-2-cols">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -52,6 +59,6 @@ export const About = () => {
           </p>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
