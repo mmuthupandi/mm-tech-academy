@@ -93,6 +93,7 @@ img {
 
 .section {
   padding: 6rem 0;
+  scroll-margin-top: 80px;
 }
 
 

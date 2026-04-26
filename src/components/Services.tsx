@@ -249,7 +249,7 @@ export const Services = () => {
 
         .wrap { max-width: 1160px; margin: 0 auto; padding: 0 4rem; }
 
-        .svc-section { padding: 80px 0 100px; }
+        .svc-section { padding: 80px 0 100px; scroll-margin-top: 80px; }
         .svc-section-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #6366f1; font-weight: 700; margin-bottom: 14px; }
         .svc-h2 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.15; color: #1a1a2e; margin-bottom: 16px; }
         .svc-sub { font-size: 1rem; color: #6b7280; line-height: 1.6; max-width: 480px; }
@@ -382,7 +382,7 @@ export const Services = () => {
       `}</style>
 
       {/* ── SERVICES ── */}
-      <section className="svc-section" style={{ paddingTop: '80px' }}>
+      <section id="services" className="svc-section" style={{ paddingTop: '80px' }}>
         <div className="wrap">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px', marginBottom: '16px' }}>
             <div>
