@@ -1,34 +1,41 @@
 import { useEffect, useState } from 'react';
 import logo from '../assets/logo.png';
 
+const RADIUS = 64;
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS; // ~402px
+const DURATION = 2800; // ms for circle to complete
+
 export const Loader = () => {
-  const [visible, setVisible] = useState(true);
-  const [fading, setFading]   = useState(false);
+  const [visible, setVisible]   = useState(true);
+  const [fading, setFading]     = useState(false);
+  const [progress, setProgress] = useState(0); // 0 → 1
 
   useEffect(() => {
-    const minTimer = setTimeout(startFade, 2200);
+    const start = performance.now();
 
-    function startFade() {
-      setFading(true);
-      setTimeout(() => setVisible(false), 600);
-    }
-
-    const onLoad = () => {
-      clearTimeout(minTimer);
-      startFade();
+    // Animate progress 0 → 1 over DURATION
+    let raf: number;
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / DURATION, 1);
+      setProgress(p);
+      if (p < 1) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        // Circle complete — short pause then fade
+        setTimeout(() => {
+          setFading(true);
+          setTimeout(() => setVisible(false), 600);
+        }, 300);
+      }
     };
+    raf = requestAnimationFrame(tick);
 
-    if (document.readyState !== 'complete') {
-      window.addEventListener('load', onLoad);
-    }
-
-    return () => {
-      clearTimeout(minTimer);
-      window.removeEventListener('load', onLoad);
-    };
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   if (!visible) return null;
+
+  const dashOffset = CIRCUMFERENCE * (1 - progress);
 
   return (
     <div style={{
@@ -40,81 +47,63 @@ export const Loader = () => {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: '2rem',
+      gap: '1.5rem',
       opacity: fading ? 0 : 1,
       transition: 'opacity 0.6s ease',
       pointerEvents: fading ? 'none' : 'all',
     }}>
 
-      {/* Spinner + logo */}
-      <div style={{ position: 'relative', width: '140px', height: '140px' }}>
+      {/* Circle progress + logo */}
+      <div style={{ position: 'relative', width: '160px', height: '160px' }}>
 
-        {/* Outer track ring */}
-        <svg width="140" height="140" viewBox="0 0 140 140"
+        {/* Track */}
+        <svg width="160" height="160" viewBox="0 0 160 160"
           style={{ position: 'absolute', inset: 0 }}>
-          <circle cx="70" cy="70" r="64"
+          <circle cx="80" cy="80" r={RADIUS}
             fill="none"
             stroke="#e2e8f0"
             strokeWidth="3"
           />
         </svg>
 
-        {/* Spinning arc */}
-        <svg width="140" height="140" viewBox="0 0 140 140"
-          style={{
-            position: 'absolute', inset: 0,
-            animation: 'loader-spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite',
-          }}>
-          <circle cx="70" cy="70" r="64"
+        {/* Progress arc — starts at top, fills clockwise */}
+        <svg width="160" height="160" viewBox="0 0 160 160"
+          style={{ position: 'absolute', inset: 0, transform: 'rotate(-90deg)' }}>
+          <circle cx="80" cy="80" r={RADIUS}
             fill="none"
             stroke="#6A63B7"
             strokeWidth="3.5"
             strokeLinecap="round"
-            strokeDasharray="80 322"
-            strokeDashoffset="0"
+            strokeDasharray={CIRCUMFERENCE}
+            strokeDashoffset={dashOffset}
+            style={{ transition: 'stroke-dashoffset 0.05s linear' }}
           />
         </svg>
 
-        {/* Logo centred */}
+        {/* Logo */}
         <img
           src={logo}
           alt="MM Tech Academy"
           style={{
             position: 'absolute',
-            inset: '20px',
-            width: 'calc(100% - 40px)',
-            height: 'calc(100% - 40px)',
+            inset: '22px',
+            width: 'calc(100% - 44px)',
+            height: 'calc(100% - 44px)',
             objectFit: 'contain',
-            animation: 'loader-pulse 1.8s ease-in-out infinite',
           }}
         />
       </div>
 
-      {/* Loading dots */}
-      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-        {[0, 1, 2].map(i => (
-          <div key={i} style={{
-            width: '6px', height: '6px',
-            borderRadius: '50%',
-            background: '#6A63B7',
-            animation: `loader-dot 1.2s ease-in-out ${i * 0.2}s infinite`,
-          }} />
-        ))}
-      </div>
-
-      <style>{`
-        @keyframes loader-spin {
-          to { transform: rotate(360deg); }
-        }
-        @keyframes loader-pulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50%       { opacity: 0.75; transform: scale(0.95); }
-        }
-        @keyframes loader-dot {
-          0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-          40%            { transform: scale(1);   opacity: 1; }
-        }
-      `}</style>
+      {/* Percentage */}
+      <span style={{
+        fontSize: '0.85rem',
+        fontWeight: 600,
+        color: '#6A63B7',
+        fontFamily: 'var(--font-primary)',
+        letterSpacing: '0.05em',
+      }}>
+        {Math.round(progress * 100)}%
+      </span>
     </div>
   );
 };
