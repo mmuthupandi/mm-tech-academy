@@ -9,7 +9,6 @@ export const Hero = () => {
     offset: ['start start', 'end start'],
   });
 
-  // Gently scale down and fade as content-wrapper slides over
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
 

@@ -1497,7 +1497,7 @@ export const Programs = () => {
       <motion.div 
         className="programs-banner glass-card"
         style={{ 
-          background: 'linear-gradient(135deg, var(--blue-dark), var(--blue-vibrant))',
+          background: 'linear-gradient(135deg, #6A63B7 0%, #4c4491 100%)',
           padding: '3rem', borderRadius: '24px', color: 'white',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           flexWrap: 'wrap', gap: '2rem'
@@ -1509,10 +1509,10 @@ export const Programs = () => {
       >
         <div style={{ maxWidth: '600px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <Globe color="var(--blue-light)" />
-            <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-light)' }}>Global Inclusion Spotlight</h3>
+            <Globe color="rgba(255,255,255,0.7)" />
+            <h3 style={{ fontSize: '1.5rem', color: 'rgba(255,255,255,0.7)' }}>Global Inclusion Spotlight</h3>
           </div>
-          <h4 className="programs-banner-title" style={{ fontSize: '2.5rem', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>Tsangayar Fasaha</h4>
+          <h4 className="programs-banner-title" style={{ fontSize: '2.5rem', marginBottom: '1rem', fontFamily: 'var(--font-heading)', color: '#fff' }}>Tsangayar Fasaha</h4>
           <p style={{ fontSize: '1.1rem', opacity: 0.9 }}>
             Our dedicated Hausa-language version of the Digital Academy, expanding our global accessibility and bringing quality tech education to diverse linguistic communities.
           </p>
