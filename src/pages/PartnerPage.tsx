@@ -1,4 +1,5 @@
-import { useState, type CSSProperties } from 'react';
+import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import { User, Briefcase, Building2, Mail, Phone, MapPin, ArrowRight, CheckCircle } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
