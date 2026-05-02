@@ -147,7 +147,9 @@ const CardNav: React.FC<CardNavProps> = ({
             <div className="hamburger-line" />
           </div>
           <div className="logo-container">
-            <img src={logo} alt={logoAlt} className="logo" />
+            <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
+              <img src={logo} alt={logoAlt} className="logo" />
+            </a>
           </div>
           <button
             type="button"

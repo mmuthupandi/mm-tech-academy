@@ -102,11 +102,11 @@ const SilkPlane = forwardRef<Mesh, SilkPlaneProps>(function SilkPlane({ uniforms
 
   useFrame((_state: RootState, delta: number) => {
     const mesh = ref as React.MutableRefObject<Mesh | null>;
-    if (mesh.current) {
-      const material = mesh.current.material as ShaderMaterial & {
-        uniforms: SilkUniforms;
-      };
-      material.uniforms.uTime.value += 0.1 * delta;
+    if (mesh.current && mesh.current.material) {
+      const material = mesh.current.material as any;
+      if (material.uniforms && material.uniforms.uTime) {
+        material.uniforms.uTime.value += 0.1 * delta;
+      }
     }
   });
 

@@ -3,18 +3,25 @@ import logo from '../assets/logo.png';
 
 const FILL_DURATION = 1.6; // seconds to draw the full circle
 const TOTAL_MS = FILL_DURATION * 1000 + 400; // fill + brief pause before fade
+const HARD_LIMIT_MS = 4000; // absolute max — site always opens
 
 export const Loader = () => {
   const [visible, setVisible] = useState(true);
   const [fading, setFading]   = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const fade = () => {
       setFading(true);
       setTimeout(() => setVisible(false), 600);
-    }, TOTAL_MS);
+    };
 
-    return () => clearTimeout(timer);
+    const timer = setTimeout(fade, TOTAL_MS);
+    const hardLimit = setTimeout(fade, HARD_LIMIT_MS); // safety net
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(hardLimit);
+    };
   }, []);
 
   if (!visible) return null;

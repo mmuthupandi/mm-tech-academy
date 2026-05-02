@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -7,9 +8,11 @@ import { Partners } from './components/Partners';
 import { Footer } from './components/Footer';
 import { TopoBackground } from './components/TopoBackground';
 import { Loader } from './components/Loader';
+import { CoursesPage } from './pages/CoursesPage';
+import { PartnerPage } from './pages/PartnerPage';
 import './components/SectionFlow.css';
 
-function App() {
+function HomePage() {
   return (
     <>
       <Loader />
@@ -28,6 +31,18 @@ function App() {
         </div>
       </div>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/partner" element={<PartnerPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

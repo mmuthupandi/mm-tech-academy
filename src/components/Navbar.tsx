@@ -7,8 +7,8 @@ const items = [
     bgColor: '#1B1722',
     textColor: '#fff',
     links: [
-      { label: 'Our Story', href: '#about', ariaLabel: 'About Our Story' },
-      { label: 'Global Reach', href: '#about', ariaLabel: 'About Global Reach' },
+      { label: 'Our Story',    href: '/#about',    ariaLabel: 'About Our Story' },
+      { label: 'Global Reach', href: '/#about',    ariaLabel: 'About Global Reach' },
     ],
   },
   {
@@ -16,18 +16,17 @@ const items = [
     bgColor: '#2F293A',
     textColor: '#fff',
     links: [
-      { label: 'All Courses', href: '#programs', ariaLabel: 'All Programs' },
-      { label: 'Case Studies', href: '#programs', ariaLabel: 'Program Case Studies' },
+      { label: 'All Courses',  href: '/courses',   ariaLabel: 'All Courses' },
+      { label: 'Services',     href: '/#services', ariaLabel: 'Our Services' },
     ],
   },
   {
-    label: 'Contact',
+    label: 'Connect',
     bgColor: '#2F293A',
     textColor: '#fff',
     links: [
-      { label: 'Email', href: '#contact', ariaLabel: 'Email us' },
-      { label: 'Partners', href: '#partners', ariaLabel: 'Our Partners' },
-      { label: 'LinkedIn', href: '#contact', ariaLabel: 'LinkedIn' },
+      { label: 'Partner With Us', href: '/partner',  ariaLabel: 'Partner With Us' },
+      { label: 'Contact',         href: '/#contact',  ariaLabel: 'Contact Us' },
     ],
   },
 ];

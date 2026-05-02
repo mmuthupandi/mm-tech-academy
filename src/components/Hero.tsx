@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Silk from './Silk';
 
 export const Hero = () => {
@@ -40,8 +41,8 @@ export const Hero = () => {
           Equipping students, professionals, and entrepreneurs with cutting-edge skills to solve our planet's toughest problems.
         </p>
         <div className="hero-buttons" style={{ justifyContent: 'center' }}>
-          <button className="btn btn-primary">Explore Courses</button>
-          <button className="btn btn-outline">Partner With Us</button>
+          <Link to="/courses" className="btn btn-primary">Explore Courses</Link>
+          <Link to="/partner" className="btn btn-outline">Partner With Us</Link>
         </div>
       </motion.div>
     </section>

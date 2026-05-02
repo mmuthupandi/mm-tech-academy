@@ -36,18 +36,18 @@ body {
 .content-wrapper {
   position: relative;
   z-index: 10;
-  overflow: hidden;
 
   /* Slide-over effect: rounded top corners + shadow so it lifts over the hero */
   border-radius: 2rem 2rem 0 0;
   box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.25);
-  margin-top: -2rem;
+  margin-top: -1.5rem;
+  background-color: #f8fafc;
+  overflow: hidden;
 }
 
 .content-sections {
   position: relative;
-  z-index: 1;
-  background-color: #f8fafc;
+  overflow: hidden;
   --topo-mx: 0px;
   --topo-my: 0px;
 }
