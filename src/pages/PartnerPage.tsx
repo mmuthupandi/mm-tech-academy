@@ -158,7 +158,7 @@ export const PartnerPage = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', paddingTop: '1rem', borderTop: '1px solid #ddd6fe' }}>
               {[
                 { icon: <Mail size={13} />, text: 'contact@mmtech.academy' },
-                { icon: <MapPin size={13} />, text: 'Coimbatore, Tamil Nadu' },
+                { icon: <MapPin size={13} />, text: '4/4a, Pongaliammam Koil Street, Vadavalli, Coimbatore – 641041' },
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: '#FF6B00' }}>
                   {item.icon} {item.text}

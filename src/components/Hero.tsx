@@ -3,39 +3,99 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Silk from './Silk';
 
+const AshokaChakra = ({ size = 140 }: { size?: number }) => {
+  const cx = size / 2;
+  const cy = size / 2;
+  const outerR = size * 0.44;
+  const innerR = size * 0.06;
+  const ringW = size * 0.025;
+
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+      <circle cx={cx} cy={cy} r={outerR} fill="none" stroke="#000080" strokeWidth={ringW} />
+      <circle cx={cx} cy={cy} r={outerR * 0.12} fill="#000080" />
+      {Array.from({ length: 24 }, (_, i) => {
+        const a = (i * 15 - 90) * (Math.PI / 180);
+        return (
+          <line
+            key={i}
+            x1={cx + innerR * Math.cos(a)}
+            y1={cy + innerR * Math.sin(a)}
+            x2={cx + outerR * 0.92 * Math.cos(a)}
+            y2={cy + outerR * 0.92 * Math.sin(a)}
+            stroke="#000080"
+            strokeWidth={ringW * 0.7}
+            strokeLinecap="round"
+          />
+        );
+      })}
+    </svg>
+  );
+};
+
 export const Hero = () => {
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
-
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const scale   = useTransform(scrollYProgress, [0, 1],   [1, 0.92]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
 
   return (
-    <section ref={ref} className="hero">
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
-        <Silk
-          speed={5}
-          scale={1}
-          color="#FF6B00"
-          noiseIntensity={1.5}
-          rotation={0}
-        />
+    <section ref={ref} className="hero" style={{ background: '#000' }}>
+
+      {/* ── Saffron band — top third ──────────────────────────────────── */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        clipPath: 'inset(0 0 66.67% 0)',
+      }}>
+        <Silk speed={5} scale={1.1} color="#FF6B00" noiseIntensity={2} rotation={0} />
       </div>
-      <motion.div 
+
+      {/* ── White band — middle third ─────────────────────────────────── */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        clipPath: 'inset(33.33% 0 33.33% 0)',
+      }}>
+        <Silk speed={5} scale={1.1} color="#e8e8e8" noiseIntensity={0.4} rotation={0} />
+      </div>
+
+      {/* ── Green band — bottom third ─────────────────────────────────── */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1,
+        clipPath: 'inset(66.67% 0 0 0)',
+      }}>
+        <Silk speed={5} scale={1.1} color="#138808" noiseIntensity={2} rotation={0} />
+      </div>
+
+      {/* ── Ashoka Chakra — centred on white band ────────────────────── */}
+      <div style={{
+        position: 'absolute',
+        top: '50%', left: '50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 2,
+        pointerEvents: 'none',
+        opacity: 0.45,
+      }}>
+        <AshokaChakra size={160} />
+      </div>
+
+      {/* ── Readable overlay ─────────────────────────────────────────── */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 2,
+        background: 'rgba(0,0,0,0.42)',
+        pointerEvents: 'none',
+      }} />
+
+      {/* ── Content ──────────────────────────────────────────────────── */}
+      <motion.div
         className="hero-content container"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        style={{ position: 'relative', zIndex: 2, scale, opacity }}
+        style={{ position: 'relative', zIndex: 3, scale, opacity }}
       >
         <h1 className="hero-title" style={{ fontWeight: 800, marginBottom: '1.5rem', lineHeight: 1.1 }}>
           Empowering Innovation, <br />
-          <span className="text-gradient">
-            Transforming Futures.
-          </span>
+          <span className="text-gradient">Transforming Futures.</span>
         </h1>
         <p className="hero-subtitle" style={{ opacity: 0.9, maxWidth: '600px' }}>
           Equipping students, professionals, and entrepreneurs with cutting-edge skills to solve our planet's toughest problems.

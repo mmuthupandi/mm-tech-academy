@@ -29,7 +29,7 @@ export const About = () => {
               </div>
               <div>
                 <h4 style={{ fontSize: '1.2rem', marginBottom: '0.25rem' }}>Main Centre</h4>
-                <p style={{ color: 'var(--gray-700)' }}>Two adjacent campuses in Sundapalayam for focused exploration.</p>
+                <p style={{ color: 'var(--gray-700)' }}>4/4a, Pongaliammam Koil Street, Vadavalli (Post), Coimbatore – 641041.</p>
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
@@ -37,7 +37,7 @@ export const About = () => {
                 <MapPin size={24} />
               </div>
               <div>
-                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.25rem' }}>City Campuses</h4>
+                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.25rem' }}>City Campus</h4>
                 <p style={{ color: 'var(--gray-700)' }}>Located in Vadavalli for easy global and urban connectivity.</p>
               </div>
             </div>
