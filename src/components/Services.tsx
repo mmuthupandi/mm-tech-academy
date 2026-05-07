@@ -99,8 +99,8 @@ function ProcessStep({ step, index }: { step: typeof STEPS[0]; index: number }) 
             borderRadius: '12px',
             transform: 'rotate(45deg)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: 'linear-gradient(135deg, #6A63B7, #9b96d4)',
-            boxShadow: '0 4px 18px rgba(106,99,183,0.4)',
+            background: 'linear-gradient(135deg, #FF6B00, #138808)',
+            boxShadow: '0 4px 18px rgba(255,107,0,0.4)',
             border: '4px solid white',
             color: 'white',
             flexShrink: 0,
@@ -150,26 +150,26 @@ function StepCard({ step }: { step: typeof STEPS[0] }) {
         borderRadius: '18px',
         padding: '1.75rem',
         boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
-        border: '1px solid rgba(106,99,183,0.12)',
+        border: '1px solid rgba(255,107,0,0.12)',
         transition: 'all 0.4s ease',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget as HTMLElement;
-        el.style.boxShadow = '0 8px 36px rgba(106,99,183,0.18)';
-        el.style.borderColor = 'rgba(106,99,183,0.35)';
+        el.style.boxShadow = '0 8px 36px rgba(255,107,0,0.18)';
+        el.style.borderColor = 'rgba(255,107,0,0.35)';
         el.style.transform = 'translateY(-4px)';
       }}
       onMouseLeave={e => {
         const el = e.currentTarget as HTMLElement;
         el.style.boxShadow = '0 4px 24px rgba(0,0,0,0.07)';
-        el.style.borderColor = 'rgba(106,99,183,0.12)';
+        el.style.borderColor = 'rgba(255,107,0,0.12)';
         el.style.transform = 'translateY(0)';
       }}
     >
       <div style={{
         display: 'inline-flex', alignItems: 'center',
         padding: '4px 14px', borderRadius: '9999px',
-        background: 'linear-gradient(135deg, #6A63B7, #9b96d4)',
+        background: 'linear-gradient(135deg, #FF6B00, #138808)',
         color: 'white', fontSize: '0.75rem', fontWeight: 700,
         marginBottom: '0.875rem', letterSpacing: '0.06em',
       }}>
@@ -210,9 +210,9 @@ function ProcessTimeline() {
             From first conversation to final delivery — every phase is intentional.
           </p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '1.5rem' }}>
-            <div style={{ width: '48px', height: '4px', background: '#6A63B7', borderRadius: '9999px' }} />
-            <div style={{ width: '10px', height: '10px', background: '#6A63B7', borderRadius: '50%' }} />
-            <div style={{ width: '48px', height: '4px', background: '#6A63B7', borderRadius: '9999px' }} />
+            <div style={{ width: '48px', height: '4px', background: '#FF6B00', borderRadius: '9999px' }} />
+            <div style={{ width: '10px', height: '10px', background: '#138808', borderRadius: '50%' }} />
+            <div style={{ width: '48px', height: '4px', background: '#FF6B00', borderRadius: '9999px' }} />
           </div>
         </motion.div>
 
@@ -307,12 +307,12 @@ export const Services = () => {
         .process-track {
           position: absolute; left: 50%; transform: translateX(-50%);
           top: 0; bottom: 0; width: 4px;
-          background: rgba(106,99,183,0.12); border-radius: 9999px;
+          background: rgba(255,107,0,0.1); border-radius: 9999px;
         }
         .process-track-fill {
           position: absolute; left: 50%; transform: translateX(-50%);
           top: 0; width: 4px;
-          background: linear-gradient(to bottom, #6A63B7, #9b96d4);
+          background: linear-gradient(to bottom, #FF6B00, #138808);
           border-radius: 9999px; transform-origin: top;
         }
 
@@ -350,7 +350,7 @@ export const Services = () => {
         /* ---- CTA ---- */
         .svc-cta { padding: 80px 0; }
         .svc-cta-box {
-          background: linear-gradient(135deg, #6A63B7 0%, #4c4491 100%);
+          background: linear-gradient(135deg, #FF6B00 0%, #cc5500 100%);
           border-radius: 28px; padding: 72px 80px;
           display: flex; align-items: center; justify-content: space-between; gap: 48px;
           position: relative; overflow: hidden;

@@ -2,18 +2,18 @@
 
 :root {
   --green-dark: #0a3a2a;
-  --green-main: #6A63B7;
-  --green-light: #6A63B7;
-  --blue-vibrant: #6A63B7;
-  --blue-light: #6A63B7;
+  --green-main: #FF6B00;
+  --green-light: #FF6B00;
+  --blue-vibrant: #FF6B00;
+  --blue-light: #FF6B00;
   --white: #ffffff;
   --gray-50: #f8fafc;
   --gray-100: #f1f5f9;
   --gray-200: #e2e8f0;
   --gray-800: #1e293b;
   --gray-900: #0f172a;
-  --blue-dark: #0a0f25;
-  --brand: #6A63B7;
+  --blue-dark: #1a0800;
+  --brand: #FF6B00;
 
   --font-primary: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
@@ -126,7 +126,7 @@ img {
 
 /* Gradients */
 .text-gradient {
-  background: linear-gradient(135deg, #6A63B7, #9b96d4, #6A63B7);
+  background: linear-gradient(135deg, #FF6B00, #138808, #FF6B00);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -170,18 +170,18 @@ img {
 
 /* For light-background buttons, use a dark overlay instead */
 .btn-light::after {
-  background-color: rgba(106, 99, 183, 0.12);
+  background-color: rgba(255, 107, 0, 0.12);
 }
 
 .btn-primary {
-  background: #6A63B7;
+  background: #FF6B00;
   color: var(--white);
-  box-shadow: 0 4px 14px rgba(106, 99, 183, 0.35);
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.35);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(106, 99, 183, 0.5);
+  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.5);
 }
 
 .btn-outline {
@@ -247,7 +247,7 @@ img {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #0d0b2e 0%, #1a1650 50%, #0f0d35 100%);
+  background: linear-gradient(135deg, #1a0800 0%, #2d1200 50%, #1a0500 100%);
 }
 
 .hero-overlay {
@@ -278,10 +278,10 @@ img {
 }
 
 .navbar.scrolled {
-  background: rgba(106, 99, 183, 0.97);
+  background: rgba(255, 107, 0, 0.97);
   backdrop-filter: blur(10px);
   padding: 0.5rem 0;
-  box-shadow: 0 4px 20px rgba(106, 99, 183, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
 }
 
 .logo-text {
@@ -378,7 +378,7 @@ img {
   top: 100%;
   left: 0;
   width: 100%;
-  background: rgba(106, 99, 183, 0.97);
+  background: rgba(255, 107, 0, 0.97);
   backdrop-filter: blur(10px);
   padding: 1rem 2rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);

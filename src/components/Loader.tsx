@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import logo from '../assets/logo.png';
+import logo from '../assets/mm orange logo.png';
 
 const FILL_DURATION = 1.6; // seconds to draw the full circle
 const TOTAL_MS = FILL_DURATION * 1000 + 400; // fill + brief pause before fade
@@ -54,7 +54,7 @@ export const Loader = () => {
           style={{ position: 'absolute', inset: 0, transform: 'rotate(-90deg)' }}>
           <circle cx="80" cy="80" r="64"
             fill="none"
-            stroke="#6A63B7"
+            stroke="#FF6B00"
             strokeWidth="3.5"
             strokeLinecap="round"
             strokeDasharray="402"

@@ -19,7 +19,7 @@ export const Hero = () => {
         <Silk
           speed={5}
           scale={1}
-          color="#6A63B7"
+          color="#FF6B00"
           noiseIntensity={1.5}
           rotation={0}
         />

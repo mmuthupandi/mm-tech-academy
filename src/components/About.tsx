@@ -24,7 +24,7 @@ export const About = () => {
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '2rem' }}>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <div style={{ background: '#6A63B7', padding: '1rem', borderRadius: '12px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ background: '#FF6B00', padding: '1rem', borderRadius: '12px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <MapPin size={24} />
               </div>
               <div>
@@ -33,7 +33,7 @@ export const About = () => {
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <div style={{ background: '#6A63B7', padding: '1rem', borderRadius: '12px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ background: '#138808', padding: '1rem', borderRadius: '12px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <MapPin size={24} />
               </div>
               <div>
@@ -46,13 +46,13 @@ export const About = () => {
 
         <motion.div
           className="glass-card"
-          style={{ padding: '3rem', background: 'linear-gradient(135deg, #3d3880, #6A63B7)', color: 'white' }}
+          style={{ padding: '3rem', background: 'linear-gradient(135deg, #0a3a00, #138808)', color: 'white' }}
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
         >
-          <Globe size={48} style={{ marginBottom: '1.5rem', color: '#c4c1e8' }} />
+          <Globe size={48} style={{ marginBottom: '1.5rem', color: '#86efac' }} />
           <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Global Reach</h3>
           <p style={{ fontSize: '1.1rem', opacity: 0.9, lineHeight: 1.8 }}>
             In 2022, we joined the International Education Partnership—a prestigious network of 95+ schools and universities across 25 countries. This strengthens our international learning standards, academic continuity, and prepares students for a world beyond the classroom.

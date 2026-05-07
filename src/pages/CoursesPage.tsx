@@ -56,14 +56,14 @@ const courses = [
     title: 'Tech Entrepreneurship & Startup Launchpad',
     description: 'From idea to MVP — validate, build, and pitch your tech startup to investors.',
     duration: '10 weeks', students: '1,200+', rating: 4.9, level: 'All Levels',
-    accent: '#6A63B7', light: '#f5f3ff', tags: ['Lean Startup', 'Pitching', 'Product Design'], featured: false,
+    accent: '#FF6B00', light: '#fff7ed', tags: ['Lean Startup', 'Pitching', 'Product Design'], featured: false,
   },
   {
     id: 8, icon: Globe, category: 'Global',
     title: 'Tsangayar Fasaha — Hausa Digital Academy',
     description: 'Quality tech education in Hausa, expanding digital skills to diverse communities.',
     duration: '12 weeks', students: '600+', rating: 4.9, level: 'Beginner',
-    accent: '#6A63B7', light: '#f5f3ff', tags: ['Hausa', 'Digital Literacy', 'Community'], featured: false,
+    accent: '#138808', light: '#f0fdf4', tags: ['Hausa', 'Digital Literacy', 'Community'], featured: false,
   },
 ];
 
@@ -87,20 +87,19 @@ export const CoursesPage = () => {
       <Navbar />
 
       {/* ── Hero strip ───────────────────────────────────────────────────── */}
-      <div style={{ background: 'linear-gradient(135deg, #0d0b2e 0%, #1a1650 100%)', paddingTop: '7rem', paddingBottom: '0', overflow: 'hidden', position: 'relative' }}>
-        {/* Decorative circles */}
-        <div style={{ position: 'absolute', top: -80, right: -80, width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(106,99,183,0.3) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: 0, left: '30%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ background: 'linear-gradient(135deg, #1a0800 0%, #2d1200 100%)', paddingTop: '7rem', paddingBottom: '0', overflow: 'hidden', position: 'relative' }}>
+        <div style={{ position: 'absolute', top: -80, right: -80, width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,107,0,0.3) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: 0, left: '30%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(19,136,8,0.2) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem 0' }}>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-              <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#9b96d4' }} />
-              <span style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#9b96d4' }}>MM Tech Academy</span>
+              <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#ffb366' }} />
+              <span style={{ fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#ffb366' }}>MM Tech Academy</span>
             </div>
             <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 900, color: 'white', lineHeight: 1.05, marginBottom: '1.25rem', fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
               Courses that<br />
-              <span style={{ background: 'linear-gradient(90deg, #9b96d4, #c4c1e8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>move careers.</span>
+              <span style={{ background: 'linear-gradient(90deg, #FF6B00, #138808)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>move careers.</span>
             </h1>
             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.65)', maxWidth: 520, lineHeight: 1.7, marginBottom: '3rem' }}>
               8 industry-aligned programs. Real skills. Real outcomes. Pick your path below.
@@ -185,8 +184,8 @@ export const CoursesPage = () => {
             <button key={cat} onClick={() => setActiveCategory(cat)}
               style={{
                 padding: '0.5rem 1.25rem', borderRadius: '9999px', border: '1.5px solid',
-                borderColor: activeCategory === cat ? '#6A63B7' : '#e2e8f0',
-                background: activeCategory === cat ? '#6A63B7' : 'white',
+                borderColor: activeCategory === cat ? '#FF6B00' : '#e2e8f0',
+                background: activeCategory === cat ? '#FF6B00' : 'white',
                 color: activeCategory === cat ? 'white' : '#64748b',
                 fontSize: '0.82rem', fontWeight: 600, cursor: 'pointer',
                 fontFamily: 'var(--font-primary)',
@@ -259,7 +258,7 @@ export const CoursesPage = () => {
           <p style={{ color: '#64748b', fontSize: '1.05rem', marginBottom: '2rem', maxWidth: 460, margin: '0 auto 2rem' }}>
             Our advisors will build a personalised learning path for your goals.
           </p>
-          <a href="/#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#6A63B7', color: 'white', padding: '0.9rem 2.25rem', borderRadius: '9999px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none', boxShadow: '0 4px 20px rgba(106,99,183,0.35)' }}>
+          <a href="/#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#FF6B00', color: 'white', padding: '0.9rem 2.25rem', borderRadius: '9999px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none', boxShadow: '0 4px 20px rgba(255,107,0,0.35)' }}>
             Talk to an Advisor <ArrowRight size={16} />
           </a>
         </motion.div>

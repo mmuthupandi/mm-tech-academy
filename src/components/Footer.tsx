@@ -7,7 +7,7 @@ const FacebookIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill=
 
 export const Footer = () => {
   return (
-    <footer id="contact" style={{ background: 'linear-gradient(135deg, #0d0b2e 0%, #1a1650 50%, #0f0d35 100%)', color: 'white', padding: '5rem 0 2rem', position: 'relative', zIndex: 1 }}>
+    <footer id="contact" style={{ background: 'linear-gradient(135deg, #1a0800 0%, #2d1200 50%, #1a0500 100%)', color: 'white', padding: '5rem 0 2rem', position: 'relative', zIndex: 1 }}>
       <div className="container footer-grid" style={{ marginBottom: '4rem' }}>
         <div>
           <a href="/" style={{ display: 'inline-block' }}>

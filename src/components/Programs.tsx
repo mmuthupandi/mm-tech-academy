@@ -1497,7 +1497,7 @@ export const Programs = () => {
       <motion.div 
         className="programs-banner glass-card"
         style={{ 
-          background: 'linear-gradient(135deg, #6A63B7 0%, #4c4491 100%)',
+          background: 'linear-gradient(135deg, #FF6B00 0%, #cc5500 100%)',
           padding: '3rem', borderRadius: '24px', color: 'white',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           flexWrap: 'wrap', gap: '2rem'

@@ -1,5 +1,5 @@
 import CardNav from './CardNav';
-import logo from '../assets/logo only.png';
+import logo from '../assets/mm orange logo only.png';
 
 const items = [
   {
@@ -38,7 +38,7 @@ export const Navbar = () => (
     items={items}
     baseColor="#fff"
     menuColor="#000"
-    buttonBgColor="#6A63B7"
+    buttonBgColor="#FF6B00"
     buttonTextColor="#fff"
     ease="power3.out"
   />

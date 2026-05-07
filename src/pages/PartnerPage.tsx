@@ -32,7 +32,7 @@ const inputStyle: CSSProperties = {
 
 const inputFocusStyle: CSSProperties = {
   ...inputStyle,
-  borderBottomColor: '#6A63B7',
+  borderBottomColor: '#FF6B00',
 };
 
 const IconWrap = ({ children }: { children: React.ReactNode }) => (
@@ -53,25 +53,25 @@ export const PartnerPage = () => {
 
       {/* ── Page hero ────────────────────────────────────────────────────── */}
       <div style={{
-        background: 'linear-gradient(135deg, #0d0b2e 0%, #1a1650 100%)',
+        background: 'linear-gradient(135deg, #1a0800 0%, #2d1200 100%)',
         paddingTop: '8rem', paddingBottom: '5rem',
         textAlign: 'center', color: 'white',
         position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{ position: 'absolute', top: -100, right: -100, width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(106,99,183,0.25) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: -60, left: '20%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: -100, right: -100, width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,107,0,0.25) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: -60, left: '20%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(19,136,8,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{ position: 'relative', zIndex: 1, padding: '0 2rem' }}
         >
-          <span style={{ display: 'inline-block', background: 'rgba(106,99,183,0.25)', border: '1px solid rgba(106,99,183,0.5)', borderRadius: '9999px', padding: '0.35rem 1.2rem', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#c4c1e8', marginBottom: '1.5rem' }}>
+          <span style={{ display: 'inline-block', background: 'rgba(255,107,0,0.2)', border: '1px solid rgba(255,107,0,0.5)', borderRadius: '9999px', padding: '0.35rem 1.2rem', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#ffb366', marginBottom: '1.5rem' }}>
             Partner With Us
           </span>
           <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1rem', fontFamily: 'var(--font-heading)', letterSpacing: '-0.02em' }}>
             Grow together.<br />
-            <span style={{ background: 'linear-gradient(90deg, #9b96d4, #c4c1e8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ background: 'linear-gradient(90deg, #FF6B00, #138808)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               Impact millions.
             </span>
           </h1>
@@ -123,14 +123,14 @@ export const PartnerPage = () => {
                 <path d="M58 80 Q72 60 86 80" fill="#92400e" />
                 <rect x="82" y="88" width="10" height="28" rx="5" fill="#4c1d95" transform="rotate(-30 82 88)" />
                 <ellipse cx="132" cy="148" rx="22" ry="8" fill="#ddd6fe" />
-                <rect x="118" y="92" width="28" height="50" rx="6" fill="#6A63B7" />
-                <rect x="114" y="102" width="12" height="28" rx="6" fill="#6A63B7" />
-                <rect x="132" y="102" width="12" height="28" rx="6" fill="#6A63B7" />
+                <rect x="118" y="92" width="28" height="50" rx="6" fill="#FF6B00" />
+                <rect x="114" y="102" width="12" height="28" rx="6" fill="#FF6B00" />
+                <rect x="132" y="102" width="12" height="28" rx="6" fill="#FF6B00" />
                 <circle cx="132" cy="84" r="14" fill="#fed7aa" />
-                <ellipse cx="126" cy="81" rx="2.5" ry="3" fill="#7c3aed" />
-                <ellipse cx="138" cy="81" rx="2.5" ry="3" fill="#7c3aed" />
+                <ellipse cx="126" cy="81" rx="2.5" ry="3" fill="#138808" />
+                <ellipse cx="138" cy="81" rx="2.5" ry="3" fill="#138808" />
                 <path d="M118 82 Q132 65 146 82" fill="#d97706" />
-                <rect x="118" y="90" width="10" height="28" rx="5" fill="#6A63B7" transform="rotate(30 128 90)" />
+                <rect x="118" y="90" width="10" height="28" rx="5" fill="#FF6B00" transform="rotate(30 128 90)" />
                 <circle cx="100" cy="72" r="6" fill="#fbbf24" opacity="0.8" />
                 <line x1="100" y1="60" x2="100" y2="52" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" />
                 <line x1="112" y1="64" x2="118" y2="58" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" />
@@ -148,7 +148,7 @@ export const PartnerPage = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 {['Co-branded certifications', 'Talent pipeline access', 'Global network of 95+ institutions'].map((perk, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.83rem', color: '#374151' }}>
-                    <CheckCircle size={14} color="#6A63B7" style={{ flexShrink: 0 }} />
+                    <CheckCircle size={14} color="#FF6B00" style={{ flexShrink: 0 }} />
                     {perk}
                   </div>
                 ))}
@@ -160,7 +160,7 @@ export const PartnerPage = () => {
                 { icon: <Mail size={13} />, text: 'contact@mmtech.academy' },
                 { icon: <MapPin size={13} />, text: 'Coimbatore, Tamil Nadu' },
               ].map((item, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: '#6A63B7' }}>
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', color: '#FF6B00' }}>
                   {item.icon} {item.text}
                 </div>
               ))}
@@ -213,8 +213,8 @@ export const PartnerPage = () => {
                     <button key={size} type="button" onClick={() => setOrgSize(size)}
                       style={{
                         padding: '0.45rem 1.1rem', borderRadius: 8, border: '1.5px solid',
-                        borderColor: orgSize === size ? '#6A63B7' : '#e2e8f0',
-                        background: orgSize === size ? '#6A63B7' : 'white',
+                        borderColor: orgSize === size ? '#FF6B00' : '#e2e8f0',
+                        background: orgSize === size ? '#FF6B00' : 'white',
                         color: orgSize === size ? 'white' : '#64748b',
                         fontSize: '0.82rem', fontWeight: 600, cursor: 'pointer',
                         fontFamily: 'var(--font-primary)', transition: 'all 0.15s ease',
@@ -226,17 +226,17 @@ export const PartnerPage = () => {
               <button type="submit"
                 style={{
                   width: '100%', padding: '0.9rem',
-                  background: '#6A63B7', color: 'white',
+                  background: '#FF6B00', color: 'white',
                   border: 'none', borderRadius: 10,
                   fontWeight: 700, fontSize: '0.9rem',
                   cursor: 'pointer', fontFamily: 'var(--font-primary)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
                   letterSpacing: '0.04em', textTransform: 'uppercase' as const,
-                  boxShadow: '0 4px 16px rgba(106,99,183,0.35)',
+                  boxShadow: '0 4px 16px rgba(255,107,0,0.35)',
                   transition: 'background 0.2s ease',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.background = '#4c4491')}
-                onMouseLeave={e => (e.currentTarget.style.background = '#6A63B7')}
+                onMouseEnter={e => (e.currentTarget.style.background = '#cc5500')}
+                onMouseLeave={e => (e.currentTarget.style.background = '#FF6B00')}
               >
                 Become a Partner <ArrowRight size={15} />
               </button>
