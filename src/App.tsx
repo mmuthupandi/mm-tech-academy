@@ -10,6 +10,10 @@ import { TopoBackground } from './components/TopoBackground';
 import { Loader } from './components/Loader';
 import { CoursesPage } from './pages/CoursesPage';
 import { PartnerPage } from './pages/PartnerPage';
+import { StudentInquiryModal } from './components/StudentInquiryModal';
+import { EnrollmentModal } from './components/EnrollmentModal';
+import { AdvisorModal } from './components/AdvisorModal';
+import { Toast } from './components/Toast';
 import './components/SectionFlow.css';
 
 function HomePage() {
@@ -37,6 +41,10 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
+      <Toast />
+      <StudentInquiryModal />
+      <EnrollmentModal />
+      <AdvisorModal />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/courses" element={<CoursesPage />} />

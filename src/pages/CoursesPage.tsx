@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Server, ShieldCheck, Monitor, BrainCircuit, Power, Camera,
-  Rocket, Globe, Clock, Users, Star, ArrowRight, Search, Filter,
+  Rocket, Globe, Clock, ArrowRight, Search, Filter,
 } from 'lucide-react';
 import { Footer } from '../components/Footer';
 import { Navbar } from '../components/Navbar';
@@ -106,16 +106,7 @@ export const CoursesPage = () => {
             </p>
           </motion.div>
 
-          {/* Stats row */}
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-            style={{ display: 'flex', gap: '3rem', paddingBottom: '3rem', borderBottom: '1px solid rgba(255,255,255,0.1)', flexWrap: 'wrap' }}>
-            {[['10K+', 'Students'], ['95%', 'Completion'], ['4.8★', 'Rating'], ['8', 'Programs']].map(([v, l]) => (
-              <div key={l}>
-                <div style={{ fontSize: '2rem', fontWeight: 800, color: 'white', lineHeight: 1 }}>{v}</div>
-                <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', marginTop: '0.25rem', letterSpacing: '0.05em' }}>{l}</div>
-              </div>
-            ))}
-          </motion.div>
+          <div style={{ paddingBottom: '3rem' }}></div>
         </div>
 
         {/* White curve transition */}
@@ -148,10 +139,8 @@ export const CoursesPage = () => {
               <p style={{ color: '#64748b', lineHeight: 1.7, marginBottom: '2rem', fontSize: '1rem' }}>{featured.description}</p>
               <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.85rem', color: '#64748b', marginBottom: '2rem' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Clock size={14} />{featured.duration}</span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Users size={14} />{featured.students}</span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Star size={14} color="#f59e0b" fill="#f59e0b" />{featured.rating}</span>
               </div>
-              <button style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: featured.accent, color: 'white', border: 'none', borderRadius: '9999px', padding: '0.85rem 2rem', fontWeight: 700, fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'var(--font-primary)', boxShadow: `0 4px 20px ${featured.accent}44` }}>
+              <button onClick={() => window.dispatchEvent(new CustomEvent('open-enrollment-modal', { detail: { course: featured.title } }))} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: featured.accent, color: 'white', border: 'none', borderRadius: '9999px', padding: '0.85rem 2rem', fontWeight: 700, fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'var(--font-primary)', boxShadow: `0 4px 20px ${featured.accent}44` }}>
                 Enroll Now <ArrowRight size={16} />
               </button>
             </div>
@@ -232,10 +221,8 @@ export const CoursesPage = () => {
                     </div>
                     <div style={{ display: 'flex', gap: '1.25rem', fontSize: '0.78rem', color: '#94a3b8', paddingTop: '0.75rem', borderTop: '1px solid #f1f5f9', marginTop: 'auto' }}>
                       <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Clock size={12} />{course.duration}</span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Users size={12} />{course.students}</span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Star size={12} color="#f59e0b" fill="#f59e0b" />{course.rating}</span>
                     </div>
-                    <button style={{ width: '100%', padding: '0.7rem', background: course.light, color: course.accent, border: `1.5px solid ${course.accent}33`, borderRadius: 10, fontWeight: 700, fontSize: '0.88rem', cursor: 'pointer', fontFamily: 'var(--font-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', transition: 'all 0.2s ease' }}
+                    <button onClick={() => window.dispatchEvent(new CustomEvent('open-enrollment-modal', { detail: { course: course.title } }))} style={{ width: '100%', padding: '0.7rem', background: course.light, color: course.accent, border: `1.5px solid ${course.accent}33`, borderRadius: 10, fontWeight: 700, fontSize: '0.88rem', cursor: 'pointer', fontFamily: 'var(--font-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', transition: 'all 0.2s ease' }}
                       onMouseEnter={e => { e.currentTarget.style.background = course.accent; e.currentTarget.style.color = 'white'; }}
                       onMouseLeave={e => { e.currentTarget.style.background = course.light; e.currentTarget.style.color = course.accent; }}
                     >
@@ -258,9 +245,9 @@ export const CoursesPage = () => {
           <p style={{ color: '#64748b', fontSize: '1.05rem', marginBottom: '2rem', maxWidth: 460, margin: '0 auto 2rem' }}>
             Our advisors will build a personalised learning path for your goals.
           </p>
-          <a href="/#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#FF6B00', color: 'white', padding: '0.9rem 2.25rem', borderRadius: '9999px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none', boxShadow: '0 4px 20px rgba(255,107,0,0.35)' }}>
+          <button onClick={() => window.dispatchEvent(new CustomEvent('open-advisor-modal'))} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#FF6B00', color: 'white', padding: '0.9rem 2.25rem', borderRadius: '9999px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none', boxShadow: '0 4px 20px rgba(255,107,0,0.35)', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
             Talk to an Advisor <ArrowRight size={16} />
-          </a>
+          </button>
         </motion.div>
       </div>
 

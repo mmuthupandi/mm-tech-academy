@@ -154,6 +154,7 @@ const CardNav: React.FC<CardNavProps> = ({
           <button
             type="button"
             className="card-nav-cta-button"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-inquiry-modal'))}
             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
           >
             Get Started

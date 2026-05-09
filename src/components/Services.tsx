@@ -453,9 +453,9 @@ export const Services = () => {
               <div className="svc-cta-h">Ready to start your<br />transformation?</div>
               <div className="svc-cta-sub">Let's build something that lasts. Talk to our team today.</div>
             </div>
-            <a href="#contact" className="svc-cta-btn" style={{ position: 'relative', zIndex: 1 }}>
+            <button onClick={() => window.dispatchEvent(new CustomEvent('open-inquiry-modal'))} className="svc-cta-btn" style={{ position: 'relative', zIndex: 1, fontFamily: 'inherit', border: 'none' }}>
               Get in touch <ArrowRight size={16} />
-            </a>
+            </button>
           </div>
         </div>
       </section>

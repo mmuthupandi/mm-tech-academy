@@ -6,6 +6,7 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { addExampleDocument } from '../services/firestore';
+import { sendEmailNotification } from '../services/emailjs';
 
 const companies = [
   "Aakash", "Aditya Birla", "Arcesium", "August AI", "Bizom", "Boston Consulting Group (BCG)",
@@ -56,7 +57,7 @@ export const PartnerPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!orgSize) {
-      alert('Please select your organisation size.');
+      window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Please select your organisation size.', type: 'error' } }));
       return;
     }
     setLoading(true);
@@ -66,14 +67,21 @@ export const PartnerPage = () => {
         orgSize,
         timestamp: new Date().toISOString()
       });
+      await sendEmailNotification({
+        title: 'Partner Application',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: `Job Title: ${formData.title} | Company: ${formData.company} | Location: ${formData.loc} | Org Size: ${orgSize}`,
+      });
       setFormData({ name: '', title: '', company: '', email: '', phone: '', loc: '' });
       setOrgSize(null);
       setLoading(false);
-      setTimeout(() => alert('Application submitted successfully!'), 10);
+      setTimeout(() => window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Application submitted successfully!', type: 'success' } })), 10);
     } catch (error) {
       console.error(error);
       setLoading(false);
-      setTimeout(() => alert('Error submitting application.'), 10);
+      setTimeout(() => window.dispatchEvent(new CustomEvent('show-toast', { detail: { message: 'Error submitting application.', type: 'error' } })), 10);
     }
   };
 
