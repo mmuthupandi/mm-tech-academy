@@ -1,11 +1,34 @@
+import { useState } from 'react';
 import { MapPin, Mail } from 'lucide-react';
 import logo from '../assets/mm orange logo only.png';
+import { addExampleDocument } from '../services/firestore';
 
 const TwitterIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>;
 const LinkedinIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>;
 const FacebookIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>;
 
 export const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async () => {
+    if (!email) return;
+    setLoading(true);
+    try {
+      await addExampleDocument('newsletter_subscribers', { 
+        email, 
+        timestamp: new Date().toISOString() 
+      });
+      setEmail('');
+      setLoading(false);
+      setTimeout(() => alert('Subscribed successfully!'), 10);
+    } catch (e) {
+      console.error(e);
+      setLoading(false);
+      setTimeout(() => alert('Error subscribing. Please try again.'), 10);
+    }
+  };
+
   return (
     <footer id="contact" style={{ background: 'linear-gradient(135deg, #1a0800 0%, #2d1200 50%, #1a0500 100%)', color: 'white', padding: '5rem 0 2rem', position: 'relative', zIndex: 1 }}>
       <div className="container footer-grid" style={{ marginBottom: '4rem' }}>
@@ -67,11 +90,17 @@ export const Footer = () => {
           <div style={{ display: 'flex' }}>
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email address"
-              style={{ padding: '0.75rem 1rem', borderRadius: '8px 0 0 8px', border: 'none', outline: 'none', width: '100%' }}
+              style={{ padding: '0.75rem 1rem', borderRadius: '8px 0 0 8px', border: 'none', outline: 'none', width: '100%', color: '#000' }}
             />
-            <button style={{ padding: '0.75rem 1rem', background: 'var(--blue-vibrant)', color: 'white', border: 'none', borderRadius: '0 8px 8px 0', cursor: 'pointer' }}>
-              Subscribe
+            <button 
+              onClick={handleSubscribe}
+              disabled={loading}
+              style={{ padding: '0.75rem 1rem', background: 'var(--blue-vibrant)', color: 'white', border: 'none', borderRadius: '0 8px 8px 0', cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.7 : 1 }}
+            >
+              {loading ? '...' : 'Subscribe'}
             </button>
           </div>
         </div>

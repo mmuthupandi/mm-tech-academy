@@ -5,6 +5,7 @@ import { User, Briefcase, Building2, Mail, Phone, MapPin, ArrowRight, CheckCircl
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { addExampleDocument } from '../services/firestore';
 
 const companies = [
   "Aakash", "Aditya Birla", "Arcesium", "August AI", "Bizom", "Boston Consulting Group (BCG)",
@@ -45,7 +46,36 @@ export const PartnerPage = () => {
   const isMobile = useIsMobile();
   const [focused, setFocused] = useState<string | null>(null);
   const [orgSize, setOrgSize] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: '', title: '', company: '', email: '', phone: '', loc: ''
+  });
+  const [loading, setLoading] = useState(false);
+  
   const gs = (n: string): CSSProperties => focused === n ? inputFocusStyle : inputStyle;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!orgSize) {
+      alert('Please select your organisation size.');
+      return;
+    }
+    setLoading(true);
+    try {
+      await addExampleDocument('partner_applications', {
+        ...formData,
+        orgSize,
+        timestamp: new Date().toISOString()
+      });
+      setFormData({ name: '', title: '', company: '', email: '', phone: '', loc: '' });
+      setOrgSize(null);
+      setLoading(false);
+      setTimeout(() => alert('Application submitted successfully!'), 10);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+      setTimeout(() => alert('Error submitting application.'), 10);
+    }
+  };
 
   return (
     <div style={{ minHeight: '100vh', background: '#f1f5f9' }}>
@@ -172,31 +202,37 @@ export const PartnerPage = () => {
             <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f172a', marginBottom: '1.75rem', fontFamily: 'var(--font-heading)' }}>
               Tell us about yourself
             </h4>
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }} onSubmit={e => e.preventDefault()}>
+            <form style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }} onSubmit={handleSubmit}>
               <div style={{ position: 'relative', marginBottom: '0.5rem' }}>
                 <IconWrap><User size={15} /></IconWrap>
-                <input type="text" placeholder="Full Name" required onFocus={() => setFocused('name')} onBlur={() => setFocused(null)} style={gs('name')} />
+                <input type="text" placeholder="Full Name" required onFocus={() => setFocused('name')} onBlur={() => setFocused(null)} style={gs('name')} 
+                  value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
               </div>
               <div style={{ position: 'relative', marginBottom: '0.5rem' }}>
                 <IconWrap><Briefcase size={15} /></IconWrap>
-                <input type="text" placeholder="Title" onFocus={() => setFocused('title')} onBlur={() => setFocused(null)} style={gs('title')} />
+                <input type="text" placeholder="Title" required onFocus={() => setFocused('title')} onBlur={() => setFocused(null)} style={gs('title')} 
+                  value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
               </div>
               <div style={{ position: 'relative', marginBottom: '0.5rem' }}>
                 <IconWrap><Building2 size={15} /></IconWrap>
-                <input type="text" placeholder="Company" required onFocus={() => setFocused('company')} onBlur={() => setFocused(null)} style={gs('company')} />
+                <input type="text" placeholder="Company" required onFocus={() => setFocused('company')} onBlur={() => setFocused(null)} style={gs('company')} 
+                  value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} />
               </div>
               <div style={{ position: 'relative', marginBottom: '0.5rem' }}>
                 <IconWrap><Mail size={15} /></IconWrap>
-                <input type="email" placeholder="Work Email" required onFocus={() => setFocused('email')} onBlur={() => setFocused(null)} style={gs('email')} />
+                <input type="email" placeholder="Work Email" required onFocus={() => setFocused('email')} onBlur={() => setFocused(null)} style={gs('email')} 
+                  value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
               </div>
               <div style={{ position: 'relative', marginBottom: '0.5rem' }}>
                 <IconWrap><Phone size={15} /></IconWrap>
-                <input type="tel" placeholder="Work Phone" onFocus={() => setFocused('phone')} onBlur={() => setFocused(null)} style={gs('phone')} />
+                <input type="tel" placeholder="Work Phone" required onFocus={() => setFocused('phone')} onBlur={() => setFocused(null)} style={gs('phone')} 
+                  value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
               </div>
               <div style={{ position: 'relative', marginBottom: '1.25rem' }}>
                 <IconWrap><MapPin size={15} /></IconWrap>
-                <select onFocus={() => setFocused('loc')} onBlur={() => setFocused(null)}
-                  style={{ ...gs('loc'), appearance: 'none' as const, color: focused === 'loc' ? '#0f172a' : '#94a3b8' }}>
+                <select required onFocus={() => setFocused('loc')} onBlur={() => setFocused(null)}
+                  style={{ ...gs('loc'), appearance: 'none' as const, color: focused === 'loc' || formData.loc ? '#0f172a' : '#94a3b8' }}
+                  value={formData.loc} onChange={e => setFormData({...formData, loc: e.target.value})}>
                   <option value="">Location</option>
                   <option>India</option>
                   <option>United States</option>
@@ -224,21 +260,23 @@ export const PartnerPage = () => {
                 </div>
               </div>
               <button type="submit"
+                disabled={loading}
                 style={{
                   width: '100%', padding: '0.9rem',
                   background: '#FF6B00', color: 'white',
                   border: 'none', borderRadius: 10,
                   fontWeight: 700, fontSize: '0.9rem',
-                  cursor: 'pointer', fontFamily: 'var(--font-primary)',
+                  cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'var(--font-primary)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
                   letterSpacing: '0.04em', textTransform: 'uppercase' as const,
                   boxShadow: '0 4px 16px rgba(255,107,0,0.35)',
                   transition: 'background 0.2s ease',
+                  opacity: loading ? 0.7 : 1
                 }}
-                onMouseEnter={e => (e.currentTarget.style.background = '#cc5500')}
-                onMouseLeave={e => (e.currentTarget.style.background = '#FF6B00')}
+                onMouseEnter={e => !loading && (e.currentTarget.style.background = '#cc5500')}
+                onMouseLeave={e => !loading && (e.currentTarget.style.background = '#FF6B00')}
               >
-                Become a Partner <ArrowRight size={15} />
+                {loading ? 'Submitting...' : <>Become a Partner <ArrowRight size={15} /></>}
               </button>
             </form>
           </div>
