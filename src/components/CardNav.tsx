@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { GoArrowUpRight } from 'react-icons/go';
 import './CardNav.css';
@@ -113,6 +113,14 @@ const CardNav: React.FC<CardNavProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, [isExpanded]);
 
+  const closeMenu = () => {
+    const tl = tlRef.current;
+    if (!tl || !isExpanded) return;
+    setIsHamburgerOpen(false);
+    tl.eventCallback('onReverseComplete', () => setIsExpanded(false));
+    tl.reverse();
+  };
+
   const toggleMenu = () => {
     const tl = tlRef.current;
     if (!tl) return;
@@ -121,11 +129,21 @@ const CardNav: React.FC<CardNavProps> = ({
       setIsExpanded(true);
       tl.play(0);
     } else {
-      setIsHamburgerOpen(false);
-      tl.eventCallback('onReverseComplete', () => setIsExpanded(false));
-      tl.reverse();
+      closeMenu();
     }
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isExpanded && navRef.current && !navRef.current.contains(event.target as Node)) {
+        closeMenu();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isExpanded]);
 
   const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
     if (el) cardsRef.current[i] = el;
@@ -147,14 +165,17 @@ const CardNav: React.FC<CardNavProps> = ({
             <div className="hamburger-line" />
           </div>
           <div className="logo-container">
-            <a href="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <a href="/" style={{ display: 'flex', alignItems: 'center' }} onClick={() => closeMenu()}>
               <img src={logo} alt={logoAlt} className="logo" />
             </a>
           </div>
           <button
             type="button"
             className="card-nav-cta-button"
-            onClick={() => window.dispatchEvent(new CustomEvent('open-inquiry-modal'))}
+            onClick={() => {
+              closeMenu();
+              window.dispatchEvent(new CustomEvent('open-inquiry-modal'));
+            }}
             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
           >
             Get Started
@@ -177,6 +198,7 @@ const CardNav: React.FC<CardNavProps> = ({
                     href={lnk.href || '#'}
                     aria-label={lnk.ariaLabel}
                     style={{ color: item.textColor }}
+                    onClick={() => closeMenu()}
                   >
                     <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                     {lnk.label}
