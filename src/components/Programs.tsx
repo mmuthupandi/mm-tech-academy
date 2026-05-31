@@ -1466,8 +1466,7 @@ export const Programs = () => {
       <div style={{ 
         display: 'grid', 
         gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
-        gap: '1.25rem', 
-        marginBottom: '4rem' 
+        gap: '1.25rem'
       }}>
         {programs.map((prog, idx) => (
           <motion.div 
@@ -1493,32 +1492,6 @@ export const Programs = () => {
           </motion.div>
         ))}
       </div>
-
-      <motion.div 
-        className="programs-banner glass-card"
-        style={{ 
-          background: 'linear-gradient(135deg, #FF6B00 0%, #cc5500 100%)',
-          padding: '3rem', borderRadius: '24px', color: 'white',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          flexWrap: 'wrap', gap: '2rem'
-        }}
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div style={{ maxWidth: '600px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <Globe color="rgba(255,255,255,0.7)" />
-            <h3 style={{ fontSize: '1.5rem', color: 'rgba(255,255,255,0.7)' }}>Global Inclusion Spotlight</h3>
-          </div>
-          <h4 className="programs-banner-title" style={{ fontSize: '2.5rem', marginBottom: '1rem', fontFamily: 'var(--font-heading)', color: '#fff' }}>Tsangayar Fasaha</h4>
-          <p style={{ fontSize: '1.1rem', opacity: 0.9 }}>
-            Our dedicated Hausa-language version of the Digital Academy, expanding our global accessibility and bringing quality tech education to diverse linguistic communities.
-          </p>
-        </div>
-        <button className="btn btn-outline btn-light" style={{ background: 'white', color: 'var(--blue-vibrant)', borderColor: 'white' }}>Learn More</button>
-      </motion.div>
     </section>
   );
 };

@@ -35,6 +35,13 @@ export const Navbar = () => (
   <CardNav
     logo={logo}
     logoAlt="MM Tech Academy"
+    brandName={
+      <div className="flex flex-col justify-center ml-2">
+        <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.25rem', color: '#1B1722', lineHeight: 1 }}>
+          <span style={{ color: '#FF6B00' }}>MM</span> Tech Academy
+        </span>
+      </div>
+    }
     items={items}
     baseColor="#fff"
     menuColor="#000"

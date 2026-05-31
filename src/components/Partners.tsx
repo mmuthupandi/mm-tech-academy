@@ -9,16 +9,18 @@ const companies = [
 ];
 
 export const Partners = () => (
-  <section id="partners" className="section" style={{ padding: '5rem 0', background: 'transparent', overflow: 'hidden' }}>
-    <motion.h2
-      className="section-title"
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      Trusted by Industry Leaders
-    </motion.h2>
+  <section id="partners" className="section" style={{ padding: '0 0 5rem 0', background: 'transparent', overflow: 'hidden' }}>
+    <div className="container">
+      <motion.h2
+        className="section-title"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        Trusted by Industry Leaders
+      </motion.h2>
+    </div>
     <div className="marquee-container">
       <div className="marquee-content">
         {[...companies, ...companies].map((company, idx) => (

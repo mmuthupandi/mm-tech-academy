@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MapPin, Mail } from 'lucide-react';
-import logo from '../assets/mm orange logo only.png';
+import logo from '../assets/mm orange logo.png';
 import { addExampleDocument } from '../services/firestore';
 import { sendEmailNotification } from '../services/emailjs';
 
@@ -16,9 +16,9 @@ export const Footer = () => {
     if (!email) return;
     setLoading(true);
     try {
-      await addExampleDocument('newsletter_subscribers', { 
-        email, 
-        timestamp: new Date().toISOString() 
+      await addExampleDocument('newsletter_subscribers', {
+        email,
+        timestamp: new Date().toISOString()
       });
       await sendEmailNotification({
         title: 'Newsletter Subscription',
@@ -42,7 +42,7 @@ export const Footer = () => {
       <div className="container footer-grid" style={{ marginBottom: '4rem' }}>
         <div>
           <a href="/" style={{ display: 'inline-block' }}>
-            <img src={logo} alt="MM Tech Academy" style={{ height: '72px', width: 'auto', objectFit: 'contain', marginBottom: '1rem' }} />
+            <img src={logo} alt="MM Tech Academy" style={{ height: '96px', width: 'auto', objectFit: 'contain', marginBottom: '1rem' }} />
           </a>
           <p style={{ color: 'var(--gray-200)', opacity: 0.8, marginBottom: '2rem' }}>
             Empowering Innovation, Transforming Futures.
@@ -103,7 +103,7 @@ export const Footer = () => {
               placeholder="Your email address"
               style={{ padding: '0.75rem 1rem', borderRadius: '8px 0 0 8px', border: 'none', outline: 'none', width: '100%', color: '#000' }}
             />
-            <button 
+            <button
               onClick={handleSubscribe}
               disabled={loading}
               style={{ padding: '0.75rem 1rem', background: 'var(--blue-vibrant)', color: 'white', border: 'none', borderRadius: '0 8px 8px 0', cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.7 : 1 }}
@@ -114,8 +114,21 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="container" style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', color: 'var(--gray-200)', fontSize: '0.9rem' }}>
-        © {new Date().getFullYear()} MM Tech Academy (Integrating M M Digital Academy & AM2 Academy). All rights reserved.
+      <div className="container" style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', color: 'var(--gray-200)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+        <div>
+          © {new Date().getFullYear()} MM Tech Academy (Integrating M M Digital Academy & AM2 Academy). All rights reserved.
+        </div>
+        {localStorage.getItem("mm_tech_user") && (
+          <button 
+            onClick={() => {
+              localStorage.removeItem("mm_tech_user");
+              window.location.reload();
+            }} 
+            style={{ background: 'none', border: 'none', color: '#fb923c', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600, textDecoration: 'underline', fontFamily: 'inherit' }}
+          >
+            Sign Out / Register Another Profile
+          </button>
+        )}
       </div>
     </footer>
   );

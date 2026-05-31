@@ -110,7 +110,7 @@ export const CoursesPage = () => {
         </div>
 
         {/* White curve transition */}
-        <div style={{ height: 60, background: 'white', borderRadius: '60px 60px 0 0', marginTop: '-1px' }} />
+        <div style={{ height: 60, background: 'white', borderRadius: '60px 60px 0 0' }} />
       </div>
 
       {/* ── Featured course ──────────────────────────────────────────────── */}
@@ -125,9 +125,9 @@ export const CoursesPage = () => {
             style={{
               display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '0',
               background: featured.light, borderRadius: 24,
-              border: `1.5px solid ${featured.accent}22`,
+              border: isMobile ? 'none' : `1.5px solid ${featured.accent}22`,
               overflow: 'hidden', cursor: 'pointer',
-              boxShadow: `0 8px 40px ${featured.accent}18`,
+              boxShadow: isMobile ? 'none' : `0 8px 40px ${featured.accent}18`,
             }}
           >
             <div style={{ padding: isMobile ? '1.75rem' : '3rem' }}>
@@ -193,10 +193,11 @@ export const CoursesPage = () => {
                 <motion.div
                   key={course.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: isMobile ? 60 : 20, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  transition={{ duration: 0.5, type: 'spring', bounce: 0.2, delay: isMobile ? 0.1 : (i % 3) * 0.1 }}
                   whileHover={{ y: -6, boxShadow: `0 20px 48px ${course.accent}18` }}
                   style={{ background: 'white', borderRadius: 20, border: '1.5px solid #f1f5f9', overflow: 'hidden', cursor: 'pointer', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column' }}
                 >

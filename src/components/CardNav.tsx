@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { GoArrowUpRight } from 'react-icons/go';
 import './CardNav.css';
@@ -19,6 +20,7 @@ export type CardNavItem = {
 export interface CardNavProps {
   logo: string;
   logoAlt?: string;
+  brandName?: React.ReactNode;
   items: CardNavItem[];
   className?: string;
   ease?: string;
@@ -31,6 +33,7 @@ export interface CardNavProps {
 const CardNav: React.FC<CardNavProps> = ({
   logo,
   logoAlt = 'Logo',
+  brandName,
   items,
   className = '',
   ease = 'power3.out',
@@ -165,9 +168,20 @@ const CardNav: React.FC<CardNavProps> = ({
             <div className="hamburger-line" />
           </div>
           <div className="logo-container">
-            <a href="/" style={{ display: 'flex', alignItems: 'center' }} onClick={() => closeMenu()}>
+            <Link to="/" onClick={() => closeMenu()} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
               <img src={logo} alt={logoAlt} className="logo" />
-            </a>
+              {brandName ? (
+                brandName
+              ) : (
+                <div className="logo-text-wrapper">
+                  <span className="logo-title">
+                    <span className="logo-orange">MM </span>
+                    <span className="logo-green">TECH</span>
+                  </span>
+                  <span className="logo-subtitle">Academy</span>
+                </div>
+              )}
+            </Link>
           </div>
           <button
             type="button"

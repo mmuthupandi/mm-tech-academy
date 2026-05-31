@@ -257,7 +257,7 @@ export const Services = () => {
         .svc-cards { margin-top: 64px; display: flex; flex-direction: column; gap: 1.5px; }
 
         .svc-card-row {
-          display: grid; grid-template-columns: 64px 1fr 1fr auto;
+          display: grid; grid-template-columns: 64px 1fr 1.5fr 1.2fr;
           align-items: center; gap: 2rem;
           padding: 28px 36px; background: #fff;
           border: 1px solid #ebebeb;
@@ -285,12 +285,7 @@ export const Services = () => {
         .svc-feat-dot { width: 5px; height: 5px; border-radius: 50%; background: #d1d5db; flex-shrink: 0; transition: background 0.3s; }
         .svc-card-row.active .svc-feat-dot { background: currentColor; }
 
-        .svc-card-arrow {
-          width: 40px; height: 40px; border-radius: 50%; border: 1px solid #e5e7eb;
-          display: flex; align-items: center; justify-content: center;
-          color: #d1d5db; transition: all 0.3s ease; flex-shrink: 0;
-        }
-        .svc-card-row.active .svc-card-arrow { background: #1a1a2e; border-color: #1a1a2e; color: #fff; }
+
 
         /* ---- PROCESS ---- */
         .svc-process { padding: 5rem 0; background: transparent; }
@@ -369,7 +364,7 @@ export const Services = () => {
 
         @media (max-width: 900px) {
           .svc-card-row { grid-template-columns: 52px 1fr; }
-          .svc-card-row > .svc-card-desc, .svc-card-row > .svc-card-features, .svc-card-row > .svc-card-arrow { display: none; }
+          .svc-card-row > .svc-card-desc, .svc-card-row > .svc-card-features { display: none; }
           .svc-strengths-grid { grid-template-columns: 1fr 1fr; }
           .svc-process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
           .svc-process-steps::before { display: none; }
@@ -431,10 +426,7 @@ export const Services = () => {
                     ))}
                   </div>
 
-                  {/* Arrow */}
-                  <div className="svc-card-arrow">
-                    <ArrowRight size={15} />
-                  </div>
+
                 </div>
               );
             })}
