@@ -1,30 +1,22 @@
-import { collection, addDoc, getDocs, QueryDocumentSnapshot } from "firebase/firestore";
-import type { DocumentData } from "firebase/firestore";
-import { db } from "../lib/firebase";
-
-// Example function to add a document to a collection
 export const addExampleDocument = async (collectionName: string, data: any) => {
   try {
-    const docRef = await addDoc(collection(db, collectionName), data);
-    console.log("Document written with ID: ", docRef.id);
-    return docRef.id;
+    const items = JSON.parse(localStorage.getItem(`mock_${collectionName}`) || "[]");
+    const id = "mock_id_" + Math.random().toString(36).substring(2, 11);
+    items.push({ id, ...data });
+    localStorage.setItem(`mock_${collectionName}`, JSON.stringify(items));
+    console.log("Document written with ID: ", id);
+    return id;
   } catch (e) {
     console.error("Error adding document: ", e);
-    throw e;
+    return null;
   }
 };
 
-// Example function to fetch documents from a collection
 export const fetchExampleDocuments = async (collectionName: string) => {
   try {
-    const querySnapshot = await getDocs(collection(db, collectionName));
-    const documents: any[] = [];
-    querySnapshot.forEach((doc: QueryDocumentSnapshot<DocumentData, DocumentData>) => {
-      documents.push({ id: doc.id, ...doc.data() });
-    });
-    return documents;
+    return JSON.parse(localStorage.getItem(`mock_${collectionName}`) || "[]");
   } catch (e) {
     console.error("Error fetching documents: ", e);
-    throw e;
+    return [];
   }
 };

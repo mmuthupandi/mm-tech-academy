@@ -1,34 +1,25 @@
-import { collection, addDoc, getDocs, query, where, limit } from "firebase/firestore";
-import { db } from "../lib/firebase";
-
 export interface UserData {
   id?: string;
   name: string;
   email: string;
   phone: string;
   createdAt: string;
+  password?: string;
 }
 
-const USERS_COLLECTION = "users";
+const USERS_COLLECTION = "mock_users";
 
-/**
- * Register a new user in the system.
- * Checks if the email already exists.
- */
 export const signUpUser = async (name: string, email: string, phone: string, password: string): Promise<UserData> => {
   try {
     const emailNormalized = email.toLowerCase().trim();
+    const users: UserData[] = JSON.parse(localStorage.getItem(USERS_COLLECTION) || "[]");
     
-    // Check if email already exists
-    const usersRef = collection(db, USERS_COLLECTION);
-    const q = query(usersRef, where("email", "==", emailNormalized), limit(1));
-    const querySnapshot = await getDocs(q);
-    
-    if (!querySnapshot.empty) {
+    if (users.find(u => u.email === emailNormalized)) {
       throw new Error("Email address is already registered.");
     }
     
-    const newUser = {
+    const newUser: UserData = {
+      id: "user_" + Math.random().toString(36).substring(2, 11),
       name: name.trim(),
       email: emailNormalized,
       phone: phone.trim(),
@@ -36,17 +27,17 @@ export const signUpUser = async (name: string, email: string, phone: string, pas
       createdAt: new Date().toISOString()
     };
     
-    const docRef = await addDoc(usersRef, newUser);
+    users.push(newUser);
+    localStorage.setItem(USERS_COLLECTION, JSON.stringify(users));
     
     const sessionUser: UserData = {
-      id: docRef.id,
+      id: newUser.id,
       name: newUser.name,
       email: newUser.email,
       phone: newUser.phone,
       createdAt: newUser.createdAt
     };
     
-    // Save to local storage for persistence
     localStorage.setItem("mm_tech_user", JSON.stringify(sessionUser));
     return sessionUser;
   } catch (e) {
@@ -55,33 +46,26 @@ export const signUpUser = async (name: string, email: string, phone: string, pas
   }
 };
 
-/**
- * Log in a user by matching email and password.
- */
 export const logInUser = async (email: string, password: string): Promise<UserData> => {
   try {
     const emailNormalized = email.toLowerCase().trim();
-    const usersRef = collection(db, USERS_COLLECTION);
-    const q = query(usersRef, where("email", "==", emailNormalized), limit(1));
-    const querySnapshot = await getDocs(q);
+    const users: UserData[] = JSON.parse(localStorage.getItem(USERS_COLLECTION) || "[]");
+    const userDoc = users.find(u => u.email === emailNormalized);
     
-    if (querySnapshot.empty) {
+    if (!userDoc) {
       throw new Error("No account found with this email address.");
     }
     
-    const userDoc = querySnapshot.docs[0];
-    const userData = userDoc.data();
-    
-    if (userData.password !== password) {
+    if (userDoc.password !== password) {
       throw new Error("Incorrect password. Please try again.");
     }
     
     const sessionUser: UserData = {
       id: userDoc.id,
-      name: userData.name,
-      email: userData.email,
-      phone: userData.phone,
-      createdAt: userData.createdAt || new Date().toISOString()
+      name: userDoc.name,
+      email: userDoc.email,
+      phone: userDoc.phone,
+      createdAt: userDoc.createdAt || new Date().toISOString()
     };
     
     localStorage.setItem("mm_tech_user", JSON.stringify(sessionUser));
@@ -92,9 +76,6 @@ export const logInUser = async (email: string, password: string): Promise<UserDa
   }
 };
 
-/**
- * Retrieve the currently logged in user session.
- */
 export const getCurrentUser = (): UserData | null => {
   const cached = localStorage.getItem("mm_tech_user");
   if (!cached) return null;
@@ -105,9 +86,6 @@ export const getCurrentUser = (): UserData | null => {
   }
 };
 
-/**
- * Log out the user.
- */
 export const logOutUser = (): void => {
   localStorage.removeItem("mm_tech_user");
   window.location.reload();

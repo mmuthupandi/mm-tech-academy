@@ -14,7 +14,6 @@ import { StudentInquiryModal } from './components/StudentInquiryModal';
 import { EnrollmentModal } from './components/EnrollmentModal';
 import { AdvisorModal } from './components/AdvisorModal';
 import { Toast } from './components/Toast';
-import { AuthGate } from './components/AuthGate';
 import { AnalyticsTracker } from './components/AnalyticsTracker';
 import { AnalyticsDashboard } from './pages/AnalyticsDashboard';
 import './components/SectionFlow.css';
@@ -50,10 +49,9 @@ function App() {
       <EnrollmentModal />
       <AdvisorModal />
       <Routes>
-        {/* Public Visitor Routes (Protected by Entry authentication) */}
-        <Route path="/" element={<AuthGate><HomePage /></AuthGate>} />
-        <Route path="/courses" element={<AuthGate><CoursesPage /></AuthGate>} />
-        <Route path="/partner" element={<AuthGate><PartnerPage /></AuthGate>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/partner" element={<PartnerPage />} />
 
         {/* Secure Admin Analytics Dashboard */}
         <Route path="/analytics" element={<AnalyticsDashboard />} />
