@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { BookOpen, Cpu, Presentation, LineChart, Lightbulb, ArrowRight, GraduationCap, Wrench, FolderKanban, Briefcase, Users } from 'lucide-react';
+import { BookOpen, Cpu, Presentation, LineChart, Lightbulb, ArrowRight, GraduationCap, Wrench, FolderKanban, Briefcase } from 'lucide-react';
 import ExtraProgramCards from './ExtraProgramCards';
 
 const SERVICES = [

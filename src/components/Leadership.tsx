@@ -1,7 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import ceoImg from '../assets/ceo_female.png';
-import execImg from '../assets/exec_male.png';
 import acadImg from '../assets/academic_male.png';
 import saravanaImg from '../assets/Dr.R.Saravana Moorthy.jpg';
 import './Leadership.css';
