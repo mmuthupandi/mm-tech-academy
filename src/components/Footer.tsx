@@ -79,11 +79,11 @@ export const Footer = () => {
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--gray-200)' }}>
             <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
               <MapPin size={20} style={{ flexShrink: 0, color: 'var(--blue-light)' }} />
-              <span>4/4a, Pongaliammam Koil Street,<br />Vadavalli (Post), Coimbatore – 641041</span>
+              <span>4/4a, Pongaliammam Koil Street,<br />Vadavalli (Post), Coimbatore, Tamil Nadu, India – 641041</span>
             </li>
             <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
               <MapPin size={20} style={{ flexShrink: 0, color: 'var(--blue-light)' }} />
-              <span>City Campus: Vadavalli, Coimbatore – 641041</span>
+              <span>City Campus: Vadavalli, Coimbatore, Tamil Nadu, India – 641041</span>
             </li>
             <li style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
               <Mail size={20} style={{ color: 'var(--blue-light)' }} />

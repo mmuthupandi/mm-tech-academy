@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { Leadership } from './components/Leadership';
 import { Services } from './components/Services';
 import { Programs } from './components/Programs';
 import { Partners } from './components/Partners';
@@ -32,6 +33,7 @@ function HomePage() {
             <Services />
             <Programs />
             <Partners />
+            <Leadership />
           </div>
           <Footer />
         </div>

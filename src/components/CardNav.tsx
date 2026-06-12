@@ -18,7 +18,7 @@ export type CardNavItem = {
 };
 
 export interface CardNavProps {
-  logo: string;
+  logo?: string;
   logoAlt?: string;
   brandName?: React.ReactNode;
   items: CardNavItem[];
@@ -169,8 +169,8 @@ const CardNav: React.FC<CardNavProps> = ({
           </div>
           <div className="logo-container">
             <Link to="/" onClick={() => closeMenu()} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <img src={logo} alt={logoAlt} className="logo" />
-              {brandName ? (
+              {logo && <img src={logo} alt={logoAlt} className="logo" />}
+              {brandName !== undefined ? (
                 brandName
               ) : (
                 <div className="logo-text-wrapper">

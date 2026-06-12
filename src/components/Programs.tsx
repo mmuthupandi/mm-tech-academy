@@ -52,9 +52,9 @@ function CircuitBackground() {
       <div style={{ position: 'absolute', bottom: '-6rem', right: '-6rem', width: '20rem', height: '20rem', backgroundColor: 'rgba(52, 211, 153, 0.2)', filter: 'blur(64px)', borderRadius: '50%' }} />
       <div style={{ position: 'absolute', bottom: '-2.5rem', right: '-2.5rem', width: '12rem', height: '12rem', backgroundColor: 'rgba(45, 212, 191, 0.3)', filter: 'blur(40px)', borderRadius: '50%' }} />
 
-      <svg 
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} 
-        viewBox="0 0 400 250" 
+      <svg
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+        viewBox="0 0 400 250"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
@@ -194,9 +194,9 @@ function CyberSecurityBackground() {
       <div style={{ position: 'absolute', top: '-2.5rem', right: '0', width: '20rem', height: '20rem', backgroundColor: 'rgba(74, 222, 128, 0.2)', filter: 'blur(60px)', borderRadius: '50%' }} />
       <div style={{ position: 'absolute', bottom: '-5rem', right: '-5rem', width: '24rem', height: '24rem', backgroundColor: 'rgba(52, 211, 153, 0.25)', filter: 'blur(70px)', borderRadius: '50%' }} />
 
-      <svg 
+      <svg
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-        viewBox="0 0 400 250" 
+        viewBox="0 0 400 250"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
@@ -239,44 +239,44 @@ function CyberSecurityBackground() {
         ))}
 
         {/* Orbiting Radar Tracks */}
-        <motion.circle 
-          cx={shieldCenterX} 
-          cy={shieldCenterY} 
-          r={75} 
-          stroke="#4ade80" 
-          strokeWidth="2" 
-          strokeDasharray="10 30" 
-          fill="none" 
-          opacity="0.8" 
-          whileInView={{ rotate: 360 }} 
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }} 
+        <motion.circle
+          cx={shieldCenterX}
+          cy={shieldCenterY}
+          r={75}
+          stroke="#4ade80"
+          strokeWidth="2"
+          strokeDasharray="10 30"
+          fill="none"
+          opacity="0.8"
+          whileInView={{ rotate: 360 }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           style={{ transformOrigin: `${shieldCenterX}px ${shieldCenterY}px` }}
         />
-        <motion.circle 
-          cx={shieldCenterX} 
-          cy={shieldCenterY} 
-          r={115} 
-          stroke="#22c55e" 
-          strokeWidth="1.5" 
-          strokeDasharray="4 16" 
-          fill="none" 
-          opacity="0.6" 
-          whileInView={{ rotate: -360 }} 
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }} 
-          style={{ transformOrigin: `${shieldCenterX}px ${shieldCenterY}px` }} 
+        <motion.circle
+          cx={shieldCenterX}
+          cy={shieldCenterY}
+          r={115}
+          stroke="#22c55e"
+          strokeWidth="1.5"
+          strokeDasharray="4 16"
+          fill="none"
+          opacity="0.6"
+          whileInView={{ rotate: -360 }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: `${shieldCenterX}px ${shieldCenterY}px` }}
         />
-        <motion.circle 
-          cx={shieldCenterX} 
-          cy={shieldCenterY} 
-          r={160} 
-          stroke="#16a34a" 
-          strokeWidth="1" 
-          strokeDasharray="2 8" 
-          fill="none" 
-          opacity="0.4" 
-          whileInView={{ rotate: 360 }} 
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }} 
-          style={{ transformOrigin: `${shieldCenterX}px ${shieldCenterY}px` }} 
+        <motion.circle
+          cx={shieldCenterX}
+          cy={shieldCenterY}
+          r={160}
+          stroke="#16a34a"
+          strokeWidth="1"
+          strokeDasharray="2 8"
+          fill="none"
+          opacity="0.4"
+          whileInView={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: `${shieldCenterX}px ${shieldCenterY}px` }}
         />
 
         {/* Ambient floating particles */}
@@ -303,7 +303,7 @@ function CyberSecurityBackground() {
 
         {/* Central Glowing Shield element */}
         <g transform="translate(280, 75)">
-          <path 
+          <path
             d="M 40 0 L 80 15 L 80 50 C 80 75 60 95 40 105 C 20 95 0 75 0 50 L 0 15 Z"
             fill="#22c55e"
             opacity="0.4"
@@ -311,7 +311,7 @@ function CyberSecurityBackground() {
         </g>
 
         <g transform="translate(280, 75)">
-          <motion.path 
+          <motion.path
             d="M 40 0 L 80 15 L 80 50 C 80 75 60 95 40 105 C 20 95 0 75 0 50 L 0 15 Z"
             fill="url(#shieldGrad)"
             stroke="#f0fdf4"
@@ -375,7 +375,7 @@ const codeNodes = Array.from({ length: 15 }).map(() => ({
   cy: 30 + Math.random() * 190,
   delay: Math.random() * 4,
   duration: 1.5 + Math.random() * 2,
-  color: codeColors[Math.floor(Math.random() * 4) + 2], 
+  color: codeColors[Math.floor(Math.random() * 4) + 2],
 }));
 
 function CodeBackground() {
@@ -385,9 +385,9 @@ function CodeBackground() {
       <div style={{ position: 'absolute', top: 0, right: 0, width: '16rem', height: '100%', backgroundColor: 'rgba(59, 130, 246, 0.1)', filter: 'blur(80px)' }} />
       <div style={{ position: 'absolute', bottom: '-2.5rem', right: '-2.5rem', width: '12rem', height: '12rem', backgroundColor: 'rgba(37, 99, 235, 0.15)', filter: 'blur(60px)', borderRadius: '50%' }} />
 
-      <svg 
+      <svg
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-        viewBox="0 0 400 250" 
+        viewBox="0 0 400 250"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
@@ -396,17 +396,17 @@ function CodeBackground() {
             <stop offset="65%" stopColor="rgba(255,255,255,0.8)" />
             <stop offset="100%" stopColor="rgba(255,255,255,1)" />
           </linearGradient>
-          
+
           <mask id="fadeMask">
             {/* The mask hides elements on the left and reveals them smoothly on the right */}
             <rect x="0" y="0" width="400" height="250" fill="url(#fadeMaskGrad)" />
           </mask>
-          
+
           <filter id="softBlueGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="2.5" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
-          
+
           <filter id="heavyBlueGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="5" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
@@ -541,9 +541,9 @@ function NeuralNetworkBackground() {
       <div style={{ position: 'absolute', top: 0, right: 0, width: '16rem', height: '100%', backgroundColor: 'rgba(167, 139, 250, 0.2)', filter: 'blur(80px)' }} />
       <div style={{ position: 'absolute', bottom: '-5rem', right: '-5rem', width: '20rem', height: '20rem', backgroundColor: 'rgba(168, 85, 247, 0.2)', filter: 'blur(70px)', borderRadius: '50%' }} />
 
-      <svg 
+      <svg
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-        viewBox="0 0 400 250" 
+        viewBox="0 0 400 250"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
@@ -552,7 +552,7 @@ function NeuralNetworkBackground() {
             <stop offset="65%" stopColor="rgba(255,255,255,0.7)" />
             <stop offset="100%" stopColor="rgba(255,255,255,1)" />
           </linearGradient>
-          
+
           <mask id="fadeMaskNeural">
             <rect x="0" y="0" width="400" height="250" fill="url(#fadeMaskGradNeural)" />
           </mask>
@@ -562,7 +562,7 @@ function NeuralNetworkBackground() {
             <stop offset="50%" stopColor="rgba(233, 213, 255, 1)" />
             <stop offset="100%" stopColor="rgba(216, 180, 254, 0)" />
           </linearGradient>
-          
+
           <filter id="softPurpleGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="2" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
@@ -610,7 +610,7 @@ function NeuralNetworkBackground() {
 
           {/* Network Nodes */}
           <g className="nodes">
-            {neuralNodes.map((node) => 
+            {neuralNodes.map((node) =>
               node.isHub ? (
                 <g key={`node-${node.id}`} transform={`translate(${node.x}, ${node.y})`}>
                   {/* Outer hub aura */}
@@ -683,7 +683,7 @@ const solarRays = Array.from({ length: 45 }).map((_, i) => {
   const dash1 = 6 + Math.random() * 12;
   const dash2 = 6 + Math.random() * 12;
   const dashArray = isDashed ? `${dash1} ${dash2}` : "none";
-  
+
   return {
     x1: solarSunX + Math.cos(angle) * 45,
     y1: solarSunY + Math.sin(angle) * 45,
@@ -708,7 +708,7 @@ const solarParticles = Array.from({ length: 25 }).map(() => {
     delay: Math.random() * 4,
     duration: 3 + Math.random() * 2,
     size: 1 + Math.random() * 2,
-    color: solarColors[Math.floor(Math.random() * 2)] 
+    color: solarColors[Math.floor(Math.random() * 2)]
   };
 });
 
@@ -719,9 +719,9 @@ function SolarBackground() {
       <div style={{ position: 'absolute', top: 0, right: 0, width: '20rem', height: '100%', backgroundColor: 'rgba(251, 146, 60, 0.1)', filter: 'blur(80px)' }} />
       <div style={{ position: 'absolute', bottom: '-2.5rem', right: '-5rem', width: '24rem', height: '24rem', backgroundColor: 'rgba(251, 191, 36, 0.2)', filter: 'blur(70px)', borderRadius: '50%' }} />
 
-      <svg 
+      <svg
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-        viewBox="0 0 400 250" 
+        viewBox="0 0 400 250"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
@@ -730,7 +730,7 @@ function SolarBackground() {
             <stop offset="55%" stopColor="rgba(255,255,255,0.7)" />
             <stop offset="100%" stopColor="rgba(255,255,255,1)" />
           </linearGradient>
-          
+
           <mask id="fadeMaskSolar">
             <rect x="0" y="0" width="400" height="250" fill="url(#fadeMaskGradSolar)" />
           </mask>
@@ -740,7 +740,7 @@ function SolarBackground() {
             <stop offset="40%" stopColor="#f59e0b" />
             <stop offset="100%" stopColor="#c2410c" />
           </radialGradient>
-          
+
           <filter id="softWarmGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="2" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
@@ -754,8 +754,8 @@ function SolarBackground() {
 
         <g mask="url(#fadeMaskSolar)">
           {/* Radiating Light Rays */}
-          <motion.g 
-            whileInView={{ rotate: 360 }} 
+          <motion.g
+            whileInView={{ rotate: 360 }}
             transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
             style={{ transformOrigin: `${solarSunX}px ${solarSunY}px` }}
           >
@@ -791,11 +791,11 @@ function SolarBackground() {
               r={p.size}
               fill={p.color}
               initial={{ x: 0, y: 0, opacity: 0, scale: 0.5 }}
-              whileInView={{ 
-                x: p.moveX, 
-                y: p.moveY, 
-                opacity: [0, 1, 0], 
-                scale: [0.5, 1.5, 0.5] 
+              whileInView={{
+                x: p.moveX,
+                y: p.moveY,
+                opacity: [0, 1, 0],
+                scale: [0.5, 1.5, 0.5]
               }}
               transition={{
                 duration: p.duration,
@@ -819,7 +819,7 @@ function SolarBackground() {
               whileInView={{ scale: [0.9, 1.25, 0.9], opacity: [0.2, 0.45, 0.2] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
-            
+
             {/* Secondary inner glow */}
             <circle
               cx={solarSunX}
@@ -889,9 +889,9 @@ function DigitalMarketingBackground() {
       <div style={{ position: 'absolute', top: 0, right: 0, width: '18rem', height: '100%', backgroundColor: 'rgba(59, 130, 246, 0.1)', filter: 'blur(70px)' }} />
       <div style={{ position: 'absolute', bottom: '-2.5rem', right: '-2.5rem', width: '24rem', height: '24rem', backgroundColor: 'rgba(99, 102, 241, 0.1)', filter: 'blur(60px)', borderRadius: '50%' }} />
 
-      <svg 
+      <svg
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-        viewBox="0 0 400 250" 
+        viewBox="0 0 400 250"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
@@ -900,16 +900,16 @@ function DigitalMarketingBackground() {
             <stop offset="55%" stopColor="rgba(255,255,255,0.75)" />
             <stop offset="100%" stopColor="rgba(255,255,255,1)" />
           </linearGradient>
-          
+
           <mask id="fadeMaskNet">
             <rect x="0" y="0" width="400" height="250" fill="url(#fadeMaskGradNet)" />
           </mask>
-          
+
           <filter id="softBlueGlowNet" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="2.5" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
-          
+
           <filter id="heavyBlueGlowNet" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="8" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
@@ -919,13 +919,13 @@ function DigitalMarketingBackground() {
         <g mask="url(#fadeMaskNet)">
           {/* Base Connection Lines (Network Mesh) */}
           {networkNodes.map(n => (
-            <line 
-              key={`base-line-${n.id}`} 
-              x1={networkCx} y1={networkCy} 
-              x2={n.x} y2={n.y} 
-              stroke="#93c5fd" 
-              strokeWidth="1.5" 
-              opacity="0.3" 
+            <line
+              key={`base-line-${n.id}`}
+              x1={networkCx} y1={networkCy}
+              x2={n.x} y2={n.y}
+              stroke="#93c5fd"
+              strokeWidth="1.5"
+              opacity="0.3"
             />
           ))}
 
@@ -933,19 +933,19 @@ function DigitalMarketingBackground() {
           {networkNodes.map(n => (
             <motion.line
               key={`pulse-${n.id}`}
-              x1={networkCx} y1={networkCy} 
+              x1={networkCx} y1={networkCy}
               x2={n.x} y2={n.y}
-              stroke="#ffffff" 
-              strokeWidth="2.5" 
+              stroke="#ffffff"
+              strokeWidth="2.5"
               strokeLinecap="round"
               strokeDasharray={`5 ${n.length + 20}`}
               initial={{ strokeDashoffset: 0 }}
               whileInView={{ strokeDashoffset: -(n.length + 10) }}
-              transition={{ 
-                duration: 2.5, 
-                delay: n.delay, 
-                repeat: Infinity, 
-                ease: "easeIn" 
+              transition={{
+                duration: 2.5,
+                delay: n.delay,
+                repeat: Infinity,
+                ease: "easeIn"
               }}
             />
           ))}
@@ -956,21 +956,21 @@ function DigitalMarketingBackground() {
 
           {/* Expanding Reach/Signal Sweeps */}
           {[0, 1, 2].map((i) => (
-             <motion.circle
-               key={`sweep-${i}`}
-               cx={networkCx} cy={networkCy}
-               fill="none"
-               stroke="#3b82f6"
-               strokeWidth="1.5"
-               initial={{ r: 20, opacity: 0.8 }}
-               whileInView={{ r: 180, opacity: 0 }}
-               transition={{ 
-                 duration: 4.5, 
-                 delay: i * 1.5, 
-                 repeat: Infinity, 
-                 ease: "linear" 
-               }}
-             />
+            <motion.circle
+              key={`sweep-${i}`}
+              cx={networkCx} cy={networkCy}
+              fill="none"
+              stroke="#3b82f6"
+              strokeWidth="1.5"
+              initial={{ r: 20, opacity: 0.8 }}
+              whileInView={{ r: 180, opacity: 0 }}
+              transition={{
+                duration: 4.5,
+                delay: i * 1.5,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            />
           ))}
 
           {/* Active Audience Nodes */}
@@ -993,7 +993,7 @@ function DigitalMarketingBackground() {
 
           {/* Growth / Fading External Nodes */}
           {networkExtraNodes.map((ext, i) => (
-            <motion.g 
+            <motion.g
               key={`extra-${i}`}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: [0, 1, 0], scale: [0.8, 1, 0.8] }}
@@ -1008,9 +1008,9 @@ function DigitalMarketingBackground() {
           {/* Central Campaign Source Hub (The Core) */}
           <g className="central-hub">
             {/* Massive ambient backing glow */}
-            <motion.circle 
-              cx={networkCx} cy={networkCy} r={32} 
-              fill="#2563eb" 
+            <motion.circle
+              cx={networkCx} cy={networkCy} r={32}
+              fill="#2563eb"
               initial={{ opacity: 0.3 }}
               whileInView={{ opacity: [0.3, 0.6, 0.3], scale: [0.95, 1.1, 0.95] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
@@ -1019,13 +1019,13 @@ function DigitalMarketingBackground() {
             {/* Outer static housing */}
             <circle cx={networkCx} cy={networkCy} r={24} fill="#1e3a8a" opacity="0.4" />
             <circle cx={networkCx} cy={networkCy} r={24} fill="none" stroke="#60a5fa" strokeWidth="2" opacity="0.8" />
-            
+
             {/* Inner dynamic cores */}
             <circle cx={networkCx} cy={networkCy} r={16} fill="#2563eb" />
             <circle cx={networkCx} cy={networkCy} r={10} fill="#3b82f6" />
-            <motion.circle 
-              cx={networkCx} cy={networkCy} r={5} 
-              fill="#ffffff" 
+            <motion.circle
+              cx={networkCx} cy={networkCy} r={5}
+              fill="#ffffff"
               whileInView={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               style={{ transformOrigin: `${networkCx}px ${networkCy}px` }}
@@ -1063,9 +1063,9 @@ function ApertureBackground() {
       <div style={{ position: 'absolute', top: 0, right: 0, width: '20rem', height: '100%', backgroundColor: 'rgba(244, 114, 182, 0.1)', filter: 'blur(80px)' }} />
       <div style={{ position: 'absolute', bottom: '-2.5rem', right: '-5rem', width: '24rem', height: '24rem', backgroundColor: 'rgba(217, 70, 239, 0.15)', filter: 'blur(70px)', borderRadius: '50%' }} />
 
-      <svg 
+      <svg
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-        viewBox="0 0 400 250" 
+        viewBox="0 0 400 250"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
@@ -1074,9 +1074,9 @@ function ApertureBackground() {
             <stop offset="60%" stopColor="rgba(255,255,255,0.75)" />
             <stop offset="100%" stopColor="rgba(255,255,255,1)" />
           </linearGradient>
-          
+
           <mask id="fadeMaskPhoto">
-             {/* Mask keeps left section clear and fades the aperture gracefully */}
+            {/* Mask keeps left section clear and fades the aperture gracefully */}
             <rect x="0" y="0" width="400" height="250" fill="url(#fadeMaskGradPhoto)" />
           </mask>
 
@@ -1091,12 +1091,12 @@ function ApertureBackground() {
             <stop offset="50%" stopColor="rgba(255,255,255,0.4)" />
             <stop offset="65%" stopColor="rgba(255,255,255,0)" />
           </linearGradient>
-          
+
           <filter id="softPinkGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="2.5" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
-          
+
           <filter id="heavyPinkGlow" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="6" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
@@ -1106,58 +1106,58 @@ function ApertureBackground() {
         <g mask="url(#fadeMaskPhoto)">
           {/* Ambient Particles */}
           <g className="particles">
-             {photoParticles.map((p, i) => (
-               <motion.circle
-                  key={`particle-${i}`}
-                  cx={p.x}
-                  cy={p.y}
-                  r={p.size}
-                  fill="#fbcfe8"
-                  initial={{ opacity: 0, scale: 0.5, y: p.y }}
-                  whileInView={{ 
-                    opacity: [0, 0.8, 0], 
-                    scale: [0.5, 1.2, 0.5],
-                    y: [p.y, p.y - 15] // Gentle upward drift
-                  }}
-                  transition={{
-                    duration: p.dur,
-                    repeat: Infinity,
-                    delay: p.delay,
-                    ease: "easeInOut"
-                  }}
-               />
-             ))}
+            {photoParticles.map((p, i) => (
+              <motion.circle
+                key={`particle-${i}`}
+                cx={p.x}
+                cy={p.y}
+                r={p.size}
+                fill="#fbcfe8"
+                initial={{ opacity: 0, scale: 0.5, y: p.y }}
+                whileInView={{
+                  opacity: [0, 0.8, 0],
+                  scale: [0.5, 1.2, 0.5],
+                  y: [p.y, p.y - 15] // Gentle upward drift
+                }}
+                transition={{
+                  duration: p.dur,
+                  repeat: Infinity,
+                  delay: p.delay,
+                  ease: "easeInOut"
+                }}
+              />
+            ))}
           </g>
 
           {/* Outer Rotating Rings */}
           {photoRings.map((ring, i) => (
-             <motion.circle
-                key={`ring-${i}`}
-                cx={photoCenterX}
-                cy={photoCenterY}
-                r={ring.r}
-                fill="none"
-                stroke={ring.stroke}
-                strokeWidth={ring.width}
-                strokeDasharray={ring.dash}
-                filter={i === 0 ? "url(#softPinkGlow)" : "none"}
-                opacity="0.7"
-                whileInView={{ rotate: 360 * ring.dir }}
-                transition={{ duration: ring.dur, repeat: Infinity, ease: "linear" }}
-                style={{ transformOrigin: `${photoCenterX}px ${photoCenterY}px` }}
-             />
+            <motion.circle
+              key={`ring-${i}`}
+              cx={photoCenterX}
+              cy={photoCenterY}
+              r={ring.r}
+              fill="none"
+              stroke={ring.stroke}
+              strokeWidth={ring.width}
+              strokeDasharray={ring.dash}
+              filter={i === 0 ? "url(#softPinkGlow)" : "none"}
+              opacity="0.7"
+              whileInView={{ rotate: 360 * ring.dir }}
+              transition={{ duration: ring.dur, repeat: Infinity, ease: "linear" }}
+              style={{ transformOrigin: `${photoCenterX}px ${photoCenterY}px` }}
+            />
           ))}
 
           {/* Main Aperture Mechanism */}
           <g className="aperture-core">
             {/* Outer casing ring */}
-            <circle 
-              cx={photoCenterX} cy={photoCenterY} r={88} 
+            <circle
+              cx={photoCenterX} cy={photoCenterY} r={88}
               fill="none" stroke="url(#bladeGrad)" strokeWidth="4" opacity="0.6"
             />
-            <circle 
-              cx={photoCenterX} cy={photoCenterY} r={85} 
-              fill="none" stroke="#fdf2f8" strokeWidth="1" 
+            <circle
+              cx={photoCenterX} cy={photoCenterY} r={85}
+              fill="none" stroke="#fdf2f8" strokeWidth="1"
               opacity="0.8"
             />
 
@@ -1169,30 +1169,30 @@ function ApertureBackground() {
               style={{ transformOrigin: `${photoCenterX}px ${photoCenterY}px` }}
             >
               {photoBlades.map((deg, i) => (
-                 <g key={i} transform={`translate(${photoCenterX}, ${photoCenterY}) rotate(${deg})`}>
-                    <path
-                      d="M 23,-12 L 95,-45 A 95 95 0 0 1 50,80 Z"
-                      fill="url(#bladeGrad)"
-                      stroke="#fdf2f8"
-                      strokeWidth="0.7"
-                      strokeOpacity="0.7"
-                    />
-                 </g>
+                <g key={i} transform={`translate(${photoCenterX}, ${photoCenterY}) rotate(${deg})`}>
+                  <path
+                    d="M 23,-12 L 95,-45 A 95 95 0 0 1 50,80 Z"
+                    fill="url(#bladeGrad)"
+                    stroke="#fdf2f8"
+                    strokeWidth="0.7"
+                    strokeOpacity="0.7"
+                  />
+                </g>
               ))}
 
               {/* Dynamic light sheen rotating across the blades */}
-              <motion.circle 
-                 cx={photoCenterX} cy={photoCenterY} r={85} 
-                 fill="url(#sheenGrad)" 
-                 style={{ transformOrigin: `${photoCenterX}px ${photoCenterY}px` }}
-                 whileInView={{ rotate: [0, 180, 360] }}
-                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              <motion.circle
+                cx={photoCenterX} cy={photoCenterY} r={85}
+                fill="url(#sheenGrad)"
+                style={{ transformOrigin: `${photoCenterX}px ${photoCenterY}px` }}
+                whileInView={{ rotate: [0, 180, 360] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               />
             </motion.g>
-            
+
             {/* Soft inner glow masking the harsh edges of the hole */}
-            <motion.circle 
-              cx={photoCenterX} cy={photoCenterY} r={28} 
+            <motion.circle
+              cx={photoCenterX} cy={photoCenterY} r={28}
               fill="none" stroke="#fbcfe8" strokeWidth="12" opacity="0.3"
               initial={{ r: 28, opacity: 0.3 }}
               whileInView={{ r: [28, 31, 28], opacity: [0.3, 0.5, 0.3] }}
@@ -1235,9 +1235,9 @@ function GrowthBackground() {
       <div style={{ position: 'absolute', top: 0, right: 0, width: '18rem', height: '100%', backgroundColor: 'rgba(52, 211, 153, 0.1)', filter: 'blur(80px)' }} />
       <div style={{ position: 'absolute', bottom: '-2.5rem', right: '-2.5rem', width: '24rem', height: '24rem', backgroundColor: 'rgba(34, 197, 94, 0.15)', filter: 'blur(60px)', borderRadius: '50%' }} />
 
-      <svg 
+      <svg
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-        viewBox="0 0 400 250" 
+        viewBox="0 0 400 250"
         preserveAspectRatio="xMidYMid slice"
       >
         <defs>
@@ -1246,9 +1246,9 @@ function GrowthBackground() {
             <stop offset="45%" stopColor="rgba(255,255,255,0.7)" />
             <stop offset="100%" stopColor="rgba(255,255,255,1)" />
           </linearGradient>
-          
+
           <mask id="fadeMaskGrowth">
-             {/* Mask keeps left section clear for typography */}
+            {/* Mask keeps left section clear for typography */}
             <rect x="0" y="0" width="400" height="250" fill="url(#fadeMaskGradGrowth)" />
           </mask>
 
@@ -1259,11 +1259,11 @@ function GrowthBackground() {
           </linearGradient>
 
           <linearGradient id="barSheen" x1="0%" y1="0%" x2="100%" y2="0%">
-             <stop offset="0%" stopColor="rgba(255,255,255,0.1)" />
-             <stop offset="30%" stopColor="rgba(255,255,255,0.7)" />
-             <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+            <stop offset="0%" stopColor="rgba(255,255,255,0.1)" />
+            <stop offset="30%" stopColor="rgba(255,255,255,0.7)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
           </linearGradient>
-          
+
           <filter id="softGreenGlowGrowth" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="3" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
@@ -1281,42 +1281,42 @@ function GrowthBackground() {
                 key={`bar-${i}`}
                 style={{ transformOrigin: "50% 250px" }}
                 whileInView={{ scaleY: [0.94, 1.05, 0.94] }}
-                transition={{ 
-                  duration: 4.5, 
-                  repeat: Infinity, 
-                  ease: "easeInOut", 
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                   delay: i * 0.2 // Wave effect from left to right
                 }}
               >
-                 {/* Main Bar Fill */}
-                 <rect x={p.x - 7} y={barTopY} width="14" height={barHeight} fill="url(#barGrad)" rx="2" opacity="0.8" />
-                 {/* Premium glossy overlay sheen */}
-                 <rect x={p.x - 7} y={barTopY} width="14" height={barHeight} fill="url(#barSheen)" rx="2" />
-                 {/* Hard highlight edge for 3D pop */}
-                 <rect x={p.x - 6} y={barTopY} width="3" height={barHeight} fill="rgba(255,255,255,0.6)" rx="1" />
+                {/* Main Bar Fill */}
+                <rect x={p.x - 7} y={barTopY} width="14" height={barHeight} fill="url(#barGrad)" rx="2" opacity="0.8" />
+                {/* Premium glossy overlay sheen */}
+                <rect x={p.x - 7} y={barTopY} width="14" height={barHeight} fill="url(#barSheen)" rx="2" />
+                {/* Hard highlight edge for 3D pop */}
+                <rect x={p.x - 6} y={barTopY} width="3" height={barHeight} fill="rgba(255,255,255,0.6)" rx="1" />
               </motion.g>
             );
           })}
 
           {/* Connective Line Graph Background (Blurry Aura) */}
-          <path 
-            d={growthPathString} 
-            stroke="#22c55e" 
-            strokeWidth="3.5" 
-            fill="none" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            opacity="0.5" 
+          <path
+            d={growthPathString}
+            stroke="#22c55e"
+            strokeWidth="3.5"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.5"
           />
 
           {/* Connective Line Graph Core */}
-          <path 
-            d={growthPathString} 
-            stroke="#16a34a" 
-            strokeWidth="1.5" 
-            fill="none" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
+          <path
+            d={growthPathString}
+            stroke="#16a34a"
+            strokeWidth="1.5"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
 
           {/* Animated data pulses traversing the main string */}
@@ -1355,38 +1355,38 @@ function GrowthBackground() {
           ))}
 
           {/* Upward Trend Arrow Head */}
-          <motion.g 
-             transform="translate(378, 17.5) rotate(-35)"
-             initial={{ x: 0, y: 0 }}
-             whileInView={{ x: [0, 2, 0], y: [0, -2, 0] }}
-             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          <motion.g
+            transform="translate(378, 17.5) rotate(-35)"
+            initial={{ x: 0, y: 0 }}
+            whileInView={{ x: [0, 2, 0], y: [0, -2, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-             <polygon points="-7,-6 5,0 -7,6 -3,0" fill="#22c55e" />
+            <polygon points="-7,-6 5,0 -7,6 -3,0" fill="#22c55e" />
           </motion.g>
 
           {/* Ambient Upward Growth Particles */}
           <g className="particles">
-             {growthParticles.map((p, i) => (
-               <motion.circle
-                  key={`particle-${i}`}
-                  cx={p.x}
-                  cy={p.y}
-                  r={p.size}
-                  fill="#86efac"
-                  initial={{ opacity: 0, scale: 0.5, y: p.y }}
-                  whileInView={{ 
-                    opacity: [0, 0.9, 0], 
-                    scale: [0.5, 1.2, 0.5],
-                    y: [p.y, p.y - 25] // Upward motion representing business rising
-                  }}
-                  transition={{
-                    duration: p.duration,
-                    repeat: Infinity,
-                    delay: p.delay,
-                    ease: "easeInOut"
-                  }}
-               />
-             ))}
+            {growthParticles.map((p, i) => (
+              <motion.circle
+                key={`particle-${i}`}
+                cx={p.x}
+                cy={p.y}
+                r={p.size}
+                fill="#86efac"
+                initial={{ opacity: 0, scale: 0.5, y: p.y }}
+                whileInView={{
+                  opacity: [0, 0.9, 0],
+                  scale: [0.5, 1.2, 0.5],
+                  y: [p.y, p.y - 25] // Upward motion representing business rising
+                }}
+                transition={{
+                  duration: p.duration,
+                  repeat: Infinity,
+                  delay: p.delay,
+                  ease: "easeInOut"
+                }}
+              />
+            ))}
           </g>
         </g>
       </svg>
@@ -1396,58 +1396,58 @@ function GrowthBackground() {
 
 export const Programs = () => {
   const programs = [
-    { 
-      icon: <Server size={22} strokeWidth={2} />, 
-      name: 'Hardware & Software Maintenance', 
+    {
+      icon: <Server size={22} strokeWidth={2} />,
+      name: 'Hardware & Software Maintenance',
       animClass: 'anim-hardware',
       iconColor: '#00acc1',
       customBackground: <CircuitBackground />
     },
-    { 
-      icon: <ShieldCheck size={22} strokeWidth={2} />, 
-      name: 'Networking & Cybersecurity', 
+    {
+      icon: <ShieldCheck size={22} strokeWidth={2} />,
+      name: 'Networking & Cybersecurity',
       animClass: 'anim-security',
       iconColor: '#42a5f5',
       customBackground: <CyberSecurityBackground />
     },
-    { 
-      icon: <Monitor size={22} strokeWidth={2} />, 
-      name: 'Programming & Web Dev', 
+    {
+      icon: <Monitor size={22} strokeWidth={2} />,
+      name: 'Programming & Web Dev',
       animClass: 'anim-programming',
       iconColor: '#42a5f5',
       customBackground: <CodeBackground />
     },
-    { 
-      icon: <BrainCircuit size={22} strokeWidth={2} />, 
-      name: 'Data Science & AI', 
+    {
+      icon: <BrainCircuit size={22} strokeWidth={2} />,
+      name: 'Data Science & AI',
       animClass: 'anim-datascience',
       iconColor: '#ab47bc',
       customBackground: <NeuralNetworkBackground />
     },
-    { 
-      icon: <Power size={22} strokeWidth={2} />, 
-      name: 'Renewable Energy (Solar PV)', 
+    {
+      icon: <Power size={22} strokeWidth={2} />,
+      name: 'Renewable Energy (Solar PV)',
       animClass: 'anim-energy',
       iconColor: '#ff9800',
       customBackground: <SolarBackground />
     },
-    { 
-      icon: <Globe size={22} strokeWidth={2} />, 
-      name: 'Digital Marketing', 
+    {
+      icon: <Globe size={22} strokeWidth={2} />,
+      name: 'Digital Marketing',
       animClass: 'anim-marketing',
       iconColor: '#29b6f6',
       customBackground: <DigitalMarketingBackground />
     },
-    { 
-      icon: <Camera size={22} strokeWidth={2} />, 
-      name: 'Photography & Video Editing', 
+    {
+      icon: <Camera size={22} strokeWidth={2} />,
+      name: 'Photography & Video Editing',
       animClass: 'anim-photography',
       iconColor: '#ec407a',
       customBackground: <ApertureBackground />
     },
-    { 
-      icon: <Rocket size={22} strokeWidth={2} />, 
-      name: 'Tech for Business', 
+    {
+      icon: <Rocket size={22} strokeWidth={2} />,
+      name: 'Tech for Business',
       animClass: 'anim-business',
       iconColor: '#66bb6a',
       customBackground: <GrowthBackground />
@@ -1463,13 +1463,13 @@ export const Programs = () => {
         </p>
       </div>
 
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
         gap: '1.25rem'
       }}>
         {programs.map((prog, idx) => (
-          <motion.div 
+          <motion.div
             key={idx}
             className="program-card"
             initial={{ opacity: 0, y: 20 }}
@@ -1481,7 +1481,7 @@ export const Programs = () => {
             {prog.customBackground ? prog.customBackground : (
               <div className={`program-card-bg ${prog.animClass}`}></div>
             )}
-            
+
             {/* Content */}
             <div className="program-card-content">
               <div className="program-card-icon" style={{ color: prog.iconColor }}>

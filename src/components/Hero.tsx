@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Silk from './Silk';
+import logo from '../assets/mm orange logo.png';
 
 const AshokaChakra = ({ size = 140 }: { size?: number }) => {
   const cx = size / 2;
@@ -40,8 +41,37 @@ export const Hero = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
 
   return (
-    <section ref={ref} className="hero" style={{ background: '#000' }}>
+    <section ref={ref} className="hero" style={{ background: '#000', position: 'relative' }}>
 
+      {/* ── Logo Top Left ───────────────────────────────────────────── */}
+      <style>{`
+        .hero-logo-wrapper {
+          position: absolute;
+          top: 2rem;
+          left: 2rem;
+          z-index: 10;
+          display: flex;
+          align-items: center;
+        }
+        .hero-logo-img {
+          height: 140px;
+          width: auto;
+        }
+        @media (max-width: 768px) {
+          .hero-logo-wrapper {
+            top: 1.5rem;
+            left: 1.5rem;
+          }
+          .hero-logo-img {
+            height: 90px;
+          }
+        }
+      `}</style>
+      <div className="hero-logo-wrapper">
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <img src={logo} alt="MM Tech Academy" className="hero-logo-img" />
+        </Link>
+      </div>
       {/* ── Saffron band — top third ──────────────────────────────────── */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
@@ -104,6 +134,35 @@ export const Hero = () => {
           <Link to="/courses" className="btn btn-primary">Explore Courses</Link>
           <Link to="/partner" className="btn btn-outline">Partner With Us</Link>
         </div>
+      </motion.div>
+
+      {/* ── Scroll Down Indicator ──────────────────────────────────────── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        style={{
+          position: 'absolute',
+          bottom: '2rem',
+          right: '2rem',
+          zIndex: 10,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          color: 'rgba(255, 255, 255, 0.9)',
+          cursor: 'pointer',
+        }}
+        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+      >
+        <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Scroll down</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14M19 12l-7 7-7-7"/>
+          </svg>
+        </motion.div>
       </motion.div>
     </section>
   );

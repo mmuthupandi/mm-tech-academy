@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { BookOpen, Cpu, Presentation, LineChart, Lightbulb, ArrowRight, GraduationCap, Wrench, FolderKanban, Briefcase } from 'lucide-react';
+import { BookOpen, Cpu, Presentation, LineChart, Lightbulb, ArrowRight, GraduationCap, Wrench, FolderKanban, Briefcase, Users } from 'lucide-react';
+import ExtraProgramCards from './ExtraProgramCards';
 
 const SERVICES = [
   {
@@ -386,8 +387,12 @@ export const Services = () => {
               <h2 className="svc-h2">Empowering Through<br />Excellence</h2>
             </div>
             <p className="svc-sub">
-              Each service is built around measurable outcomes, not just deliverables.
+              We offer specialized programs for school children, college students, and working professionals. Each service is built around measurable outcomes, not just deliverables.
             </p>
+          </div>
+
+          <div style={{ marginBottom: '2rem' }}>
+            <ExtraProgramCards />
           </div>
 
           <div className="svc-cards">

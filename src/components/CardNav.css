@@ -224,19 +224,44 @@
     top: 1.2em;
   }
 
+  .card-nav {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .card-nav.open {
+    background-color: white !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+
   .card-nav-top {
+    padding: 0;
+    justify-content: flex-end;
+  }
+
+  .card-nav.open .card-nav-top {
     padding: 0.5rem 1rem;
     justify-content: space-between;
   }
 
   .hamburger-menu {
     order: 2;
+    background-color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .card-nav.open .hamburger-menu {
+    background-color: transparent;
+    box-shadow: none;
   }
 
   .logo-container {
-    position: static;
-    transform: none;
-    order: 1;
+    display: none;
   }
 
   .card-nav-cta-button {
