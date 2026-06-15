@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { School, GraduationCap, Briefcase } from "lucide-react";
 import schoolVideo from '../assets/school.mp4';
 import collegeVideo from '../assets/college.mp4';
@@ -12,7 +12,7 @@ interface Audience {
   colorVar: string;
   video?: string;
   curriculum: string[];
-  LucideIcon: React.ElementType;
+  LucideIcon: React.ElementType<any>;
 }
 
 const audiences: Audience[] = [
@@ -362,7 +362,7 @@ const ExtraProgramCards: React.FC = () => {
                   color: `var(--color-text-${selectedAudience.colorVar})`,
                 }}
               >
-                <selectedAudience.LucideIcon size={28} />
+                {React.createElement(selectedAudience.LucideIcon as any, { size: 28 })}
               </div>
               <div>
                 <h3 className="epc-modal-title">{selectedAudience.title}</h3>
