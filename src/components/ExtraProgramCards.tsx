@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { School, GraduationCap, Briefcase } from "lucide-react";
 import schoolVideo from '../assets/school.mp4';
 import collegeVideo from '../assets/college.mp4';
 import workingVideo from '../assets/working professtional.mp4';
@@ -10,6 +11,8 @@ interface Audience {
   badge: string;
   colorVar: string;
   video?: string;
+  curriculum: string[];
+  LucideIcon: React.ElementType;
 }
 
 const audiences: Audience[] = [
@@ -20,6 +23,13 @@ const audiences: Audience[] = [
     badge: "Grades 6-12",
     colorVar: "info",
     video: schoolVideo,
+    LucideIcon: School,
+    curriculum: [
+      "Block-based coding (Scratch)",
+      "Introduction to Python & Logic Building",
+      "Web Basics (HTML, CSS)",
+      "Mathematics & Analytical Thinking"
+    ]
   },
   {
     icon: "ti-certificate",
@@ -28,6 +38,13 @@ const audiences: Audience[] = [
     badge: "UG / PG",
     colorVar: "success",
     video: collegeVideo,
+    LucideIcon: GraduationCap,
+    curriculum: [
+      "Advanced Data Structures & Algorithms",
+      "Full-stack Web Development",
+      "Mobile App Development",
+      "Interview Preparation & Projects"
+    ]
   },
   {
     icon: "ti-briefcase",
@@ -36,10 +53,19 @@ const audiences: Audience[] = [
     badge: "Evening / weekend",
     colorVar: "warning",
     video: workingVideo,
+    LucideIcon: Briefcase,
+    curriculum: [
+      "Advanced System Design & Architecture",
+      "Cloud Computing (AWS, Azure, GCP)",
+      "DevOps & CI/CD pipelines",
+      "Emerging Technologies (AI, Machine Learning)"
+    ]
   },
 ];
 
 const ExtraProgramCards: React.FC = () => {
+  const [selectedAudience, setSelectedAudience] = React.useState<Audience | null>(null);
+
   return (
     <div className="cards-grid-wrapper">
       <style>{`
@@ -135,6 +161,110 @@ const ExtraProgramCards: React.FC = () => {
           padding: 2px 8px;
           border-radius: var(--border-radius-md);
         }
+        .epc-modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.6);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+          padding: 1rem;
+          opacity: 0;
+          animation: fadeIn 0.3s forwards;
+          backdrop-filter: blur(4px);
+        }
+        .epc-modal-content {
+          background: var(--color-background-primary);
+          border-radius: var(--border-radius-lg);
+          padding: 2rem;
+          max-width: 500px;
+          width: 100%;
+          position: relative;
+          transform: translateY(20px);
+          animation: slideUp 0.3s forwards;
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .epc-modal-close {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          background: none;
+          border: none;
+          font-size: 1.5rem;
+          cursor: pointer;
+          color: var(--color-text-secondary);
+          line-height: 1;
+          padding: 0.25rem;
+          transition: color 0.2s;
+        }
+        .epc-modal-close:hover {
+          color: #111827;
+        }
+        .epc-modal-header {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 1.5rem;
+        }
+        .epc-modal-icon {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 28px;
+        }
+        .epc-modal-title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin: 0;
+          color: #111827;
+        }
+        .epc-modal-desc {
+          font-size: 1rem;
+          color: var(--color-text-secondary);
+          margin: 4px 0 0 0;
+        }
+        .epc-modal-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .epc-modal-list li {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          font-size: 1rem;
+          color: #374151;
+          background: #f9fafb;
+          padding: 12px 16px;
+          border-radius: var(--border-radius-md);
+          border: 1px solid var(--color-border-tertiary);
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .epc-modal-list li:hover {
+          transform: translateX(4px);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .epc-modal-list li i {
+          color: var(--color-text-success);
+          font-size: 1.25rem;
+          margin-top: 2px;
+        }
+        @keyframes fadeIn {
+          to { opacity: 1; }
+        }
+        @keyframes slideUp {
+          to { transform: translateY(0); }
+        }
       `}</style>
 
       {audiences.map((a, i) => (
@@ -142,6 +272,7 @@ const ExtraProgramCards: React.FC = () => {
           key={a.title}
           className="prog-card"
           style={{ animationDelay: `${i * 0.12}s` }}
+          onClick={() => setSelectedAudience(a)}
         >
           {a.video ? (
             <>
@@ -216,6 +347,40 @@ const ExtraProgramCards: React.FC = () => {
           )}
         </div>
       ))}
+
+      {selectedAudience && (
+        <div className="epc-modal-overlay" onClick={() => setSelectedAudience(null)}>
+          <div className="epc-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="epc-modal-close" onClick={() => setSelectedAudience(null)}>
+              &times;
+            </button>
+            <div className="epc-modal-header">
+              <div 
+                className="epc-modal-icon"
+                style={{
+                  background: `var(--color-background-${selectedAudience.colorVar})`,
+                  color: `var(--color-text-${selectedAudience.colorVar})`,
+                }}
+              >
+                <selectedAudience.LucideIcon size={28} />
+              </div>
+              <div>
+                <h3 className="epc-modal-title">{selectedAudience.title}</h3>
+                <p className="epc-modal-desc">{selectedAudience.description}</p>
+              </div>
+            </div>
+            
+            <ul className="epc-modal-list">
+              {selectedAudience.curriculum.map((item, idx) => (
+                <li key={idx}>
+                  <i className="ti ti-check" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
