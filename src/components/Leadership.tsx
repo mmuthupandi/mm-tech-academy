@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import ceoImg from '../assets/Dr.Angel.jpeg';
+import ceoImg from '../assets/ceo.jpeg';
 import acadImg from '../assets/Mr mirthunmoorthy.jpeg';
 import saravanaImg from '../assets/Dr.R.Saravana Moorthy.jpg';
 import './Leadership.css';
