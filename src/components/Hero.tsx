@@ -34,7 +34,11 @@ const AshokaChakra = ({ size = 140 }: { size?: number }) => {
   );
 };
 
-export const Hero = () => {
+interface HeroProps {
+  onOpenTeaser?: () => void;
+}
+
+export const Hero = ({ onOpenTeaser }: HeroProps) => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const scale   = useTransform(scrollYProgress, [0, 1],   [1, 0.92]);
@@ -164,6 +168,14 @@ export const Hero = () => {
           </svg>
         </motion.div>
       </motion.div>
+
+      {/* Floating Teaser Badge - Now Absolute to Hero */}
+      {onOpenTeaser && (
+        <div className="news-link-badge" onClick={onOpenTeaser}>
+          <div className="pulse-dot"></div>
+          🚀 Sneak Peek: Traveloop
+        </div>
+      )}
     </section>
   );
 };

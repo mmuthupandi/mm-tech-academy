@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Leadership } from './components/Leadership';
+import { EventsShowcase } from './components/EventsShowcase';
 import { Services } from './components/Services';
 import { Programs } from './components/Programs';
 import { Partners } from './components/Partners';
@@ -17,27 +19,33 @@ import { AdvisorModal } from './components/AdvisorModal';
 import { Toast } from './components/Toast';
 import { AnalyticsTracker } from './components/AnalyticsTracker';
 import { AnalyticsDashboard } from './pages/AnalyticsDashboard';
+import { ProjectTeaserModal } from './components/ProjectTeaserModal';
 import './components/SectionFlow.css';
 
 function HomePage() {
+  const [isTeaserOpen, setIsTeaserOpen] = useState(false);
+
   return (
     <>
       <Loader />
       <div className="app">
         <Navbar />
-        <Hero />
+        <Hero onOpenTeaser={() => setIsTeaserOpen(true)} />
         <div className="content-wrapper">
           <TopoBackground />
           <div className="content-sections">
             <About />
-            <Services />
+            <EventsShowcase />
             <Programs />
+            <Services />
             <Partners />
             <Leadership />
           </div>
           <Footer />
         </div>
       </div>
+
+      <ProjectTeaserModal isOpen={isTeaserOpen} onClose={() => setIsTeaserOpen(false)} />
     </>
   );
 }
