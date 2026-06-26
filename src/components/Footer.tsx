@@ -47,7 +47,7 @@ export const Footer = () => {
             <img src={logo} alt="MM Tech Academy" style={{ height: '96px', width: 'auto', objectFit: 'contain', marginBottom: '1rem' }} />
           </a>
           <p style={{ color: 'var(--gray-200)', opacity: 0.8, marginBottom: '2rem' }}>
-            Empowering Innovation, Transforming Futures.
+            Get the best in Everything.
           </p>
           <div style={{ display: 'flex', gap: '1rem', color: 'var(--blue-light)' }}>
             <div style={{ cursor: 'pointer' }}><LinkedinIcon /></div>

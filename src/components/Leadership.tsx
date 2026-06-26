@@ -1,27 +1,19 @@
 import { motion } from 'framer-motion';
-import ceoImg from '../assets/ceo.jpeg';
-import acadImg from '../assets/Mr mirthunmoorthy.jpeg';
 import saravanaImg from '../assets/Dr.R.Saravana Moorthy.jpg';
 import './Leadership.css';
 
 const leaders = [
   {
-    name: 'Dr. S. Angel',
-    role: 'Chief Executive Officer',
-    image: ceoImg,
-    bio: 'With over 15 years of experience in ed-tech and global strategy, Dr. Angel leads MM Tech Academy with a vision to democratize elite technology education for all.',
+    name: '',
+    role: 'Founder',
+    image: '',
+    bio: '',
   },
   {
     name: 'Dr. R. Saravanamoorthy',
-    role: 'Executive Director',
+    role: 'Chief Executive Officer',
     image: saravanaImg,
     bio: 'A passionate advocate for continuous learning, Dr. Saravanamoorthy oversees operations, strategic partnerships, and ensures our programs consistently deliver measurable career outcomes.',
-  },
-  {
-    name: 'Mr. Mirthunmoorthy',
-    role: 'Academic Director',
-    image: acadImg,
-    bio: 'An industry veteran in AI and emerging tech, Mr. Mirthunmoorthy meticulously designs our cutting-edge curricula to bridge the gap between academia and real-world industry requirements.',
   }
 ];
 
@@ -53,7 +45,11 @@ export const Leadership = () => {
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className="leadership-card"
             >
-              <img src={leader.image} alt={leader.name} className="leadership-img" />
+              {leader.image ? (
+                <img src={leader.image} alt={leader.name} className="leadership-img" />
+              ) : (
+                <div className="leadership-img" style={{ backgroundColor: '#222' }} />
+              )}
               <div className="leadership-overlay">
                 <div className="leadership-info">
                   <h3 className="leadership-name">{leader.name}</h3>

@@ -128,8 +128,8 @@ export const Hero = ({ onOpenTeaser }: HeroProps) => {
         style={{ position: 'relative', zIndex: 3, scale, opacity }}
       >
         <h1 className="hero-title" style={{ fontWeight: 800, marginBottom: '1.5rem', lineHeight: 1.1 }}>
-          Empowering Innovation, <br />
-          <span className="text-gradient">Transforming Futures.</span>
+          Get the best <br />
+          <span className="text-gradient">in Everything.</span>
         </h1>
         <p className="hero-subtitle" style={{ opacity: 0.9, maxWidth: '600px' }}>
           Equipping students, professionals, and entrepreneurs with cutting-edge skills to solve our planet's toughest problems.
